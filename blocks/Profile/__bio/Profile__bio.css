@@ -1,0 +1,13 @@
+.Profile__bio {
+  font-family: "Inter", Arial, Helvetica, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
+  margin: 0;
+  padding-top: 16px;
+  max-width: 366px;
+}
+
+/* отредактировать секцию профиль */
