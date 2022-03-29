@@ -1,3 +1,5 @@
 .Profile__Add-Button {
-  max-width: 150px;
+  background-color: black;
+  border: none;
+  padding: 0;
 }

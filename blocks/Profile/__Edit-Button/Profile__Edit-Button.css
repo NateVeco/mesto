@@ -1,5 +1,7 @@
 .Profile__Edit-Button {
-  background-image: url(../../../images/Edit-Button.png);
+  background-color: black;
+  border: none;
+  padding: 0;
 }
 
-/* сделать кнопки и адаптив */
+/* адаптив */

@@ -1,5 +1,3 @@
-.Profile__Info {
-  max-width: 336px;
-  padding: 0;
-  margin: 0;
+.Profile__info {
+  display: flex;
 }
