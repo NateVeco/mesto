@@ -2,3 +2,9 @@
   margin: 0 auto;
   max-width: 880px;
 }
+
+@media screen and (max-width: 320px) {
+  .Footer {
+    max-width: 282px;
+  }
+}

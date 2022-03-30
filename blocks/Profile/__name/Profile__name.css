@@ -7,3 +7,11 @@
   color: white;
   margin: 0;
 }
+
+@media screen and (max-width: 320px) {
+  .Profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+  }
+}

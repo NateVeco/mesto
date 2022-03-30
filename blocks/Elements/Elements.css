@@ -4,3 +4,11 @@
   padding-top: 50px;
   padding-bottom: 66px;
 }
+
+@media screen and (max-width: 320px) {
+  .Elements {
+    max-width: 282px;
+    padding-top: 36px;
+    padding-bottom: 48px;
+  }
+}

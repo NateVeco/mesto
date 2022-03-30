@@ -3,3 +3,9 @@
   border: none;
   padding: 0;
 }
+
+@media screen and (max-width: 320px) {
+  .Profile__Add-Button {
+    /* Не знаю как сделать кнопку по размеру */
+  }
+}

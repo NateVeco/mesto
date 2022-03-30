@@ -6,3 +6,12 @@
   max-width: 880px;
   padding-top: 40px;
 }
+
+@media screen and (max-width: 320px) {
+  .Profile {
+    max-width: 282px;
+    padding-top: 42px;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
