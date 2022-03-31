@@ -1,5 +1,12 @@
 .Profile__Edit-Button {
   background-color: black;
-  border: none;
   padding: 0;
+  max-width: 24px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  background-image: url(../../../images/Edit-Button.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  cursor: pointer;
 }

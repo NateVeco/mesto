@@ -1,4 +1,5 @@
 .Elements__image {
   max-width: 282px;
-  max-height: 282px;
+  min-height: 282px;
+  object-fit: cover;
 }
