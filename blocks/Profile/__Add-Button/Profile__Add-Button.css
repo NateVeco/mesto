@@ -2,10 +2,20 @@
   background-color: black;
   border: none;
   padding: 0;
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../images/Add-Button.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150px 50px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
   .Profile__Add-Button {
-    /* Не знаю как сделать кнопку по размеру */
+    background-image: url(../../../images/Add-Button320.png);
+    width: 282px;
+    height: 50px;
+    background-size: 282px 50px;
   }
 }
