@@ -24,13 +24,13 @@
               <h1 class="Profile__name">Жак-Ив Кусто</h1>
               <button
                 name="Edit-Button"
-                class="Profile__Edit-Button"
+                class="Profile__Edit-Button button"
                 type="button"
               ></button>
               <p class="Profile__bio">Исследователь океана</p>
             </div>
           </div>
-          <button class="Profile__Add-Button"></button>
+          <button class="Profile__Add-Button button"></button>
         </section>
         <section class="Elements">
           <ul class="Elements__table">
@@ -43,7 +43,7 @@
                 />
                 <div class="Elements__info">
                   <h2 class="Elements__title">Дорога в Исландии</h2>
-                  <button class="Elements__Like-Button"></button>
+                  <button class="Elements__Like-Button button"></button>
                 </div>
               </div>
             </li>
@@ -56,7 +56,7 @@
                 />
                 <div class="Elements__info">
                   <h2 class="Elements__title">горы Исландии</h2>
-                  <button class="Elements__Like-Button"></button>
+                  <button class="Elements__Like-Button button"></button>
                 </div>
               </div>
             </li>
@@ -69,7 +69,7 @@
                 />
                 <div class="Elements__info">
                   <h2 class="Elements__title">Исландия</h2>
-                  <button class="Elements__Like-Button"></button>
+                  <button class="Elements__Like-Button button"></button>
                 </div>
               </div>
             </li>
@@ -83,7 +83,7 @@
 
                 <div class="Elements__info">
                   <h2 class="Elements__title">Гринландия</h2>
-                  <button class="Elements__Like-Button"></button>
+                  <button class="Elements__Like-Button button"></button>
                 </div>
               </div>
             </li>
@@ -96,7 +96,7 @@
                 />
                 <div class="Elements__info">
                   <h2 class="Elements__title">Ночная Исландия</h2>
-                  <button class="Elements__Like-Button"></button>
+                  <button class="Elements__Like-Button button"></button>
                 </div>
               </div>
             </li>
@@ -109,7 +109,7 @@
                 />
                 <div class="Elements__info">
                   <h2 class="Elements__title">В океане</h2>
-                  <button class="Elements__Like-Button"></button>
+                  <button class="Elements__Like-Button button"></button>
                 </div>
               </div>
             </li>
@@ -119,10 +119,42 @@
       <footer class="Footer">
         <p class="Footer__autor">&#169; 2020 Mesto Russia</p>
       </footer>
+      <!-- Форма для редактирования профиля-->
+      <section class="popup popup_opened">
+        <div class="popup__background">
+          <div class="popup__form">
+            <div class="popup__button-close button">
+              <img src="./images/Button-close.png" />
+            </div>
+            <form action="#" class="popup__container">
+              <h2 class="popup__title">Редактировать профиль</h2>
+
+              <input
+                type="text"
+                value="Жак-Ив Кусто"
+                placeholder="Жак-Ив Кусто"
+                name="name"
+                id="name"
+                class="popup__text"
+                required
+              />
+              <input
+                type="text"
+                value="Исследователь океана"
+                placeholder="Исследователь океана"
+                name="bio"
+                id="bio"
+                class="popup__text"
+                required
+              />
+              <button type="submit" class="popup__button-save button">
+                Сохранить
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
-    <!-- Форма для редактирования профиля-->
     <script src="script.js"></script>
   </body>
 </html>
-
-<!-- Перехожу работать над js (разобраться с кнопками и формами) -->

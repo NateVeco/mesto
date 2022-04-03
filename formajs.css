@@ -1,0 +1,98 @@
+.popup {
+  position: fixed;
+  max-width: 1280px;
+  top: 195px;
+  right: 27%;
+  /* position: relative;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 1280px;
+  height: 100vh; */
+
+  /* display: none; */
+}
+
+.popup__background {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.popup__form {
+  position: fixed;
+  top: 195px;
+  left: 27%;
+}
+
+.popup__container {
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 430px;
+  padding: 37px;
+}
+
+.popup__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  text-align: center;
+  padding-bottom: 54px;
+  margin: 0;
+}
+
+.popup__text {
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #bcbcc4;
+  background-color: transparent;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.popup__text:last-child {
+  margin: 48px;
+}
+
+.popup__button-save {
+  cursor: pointer;
+  padding: 0;
+  width: 358px;
+  height: 50px;
+  color: white;
+  background-color: #000000;
+  border: none;
+}
+
+.popup__button-close {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* .popup_opened {
+  display: block;
+} */
+
+.button:hover {
+  opacity: 0.6;
+}
+
+/* разобраться с прозрачным фоном и кнопкой закрытия. Плюс js */
