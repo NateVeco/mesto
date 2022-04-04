@@ -13,3 +13,5 @@
 HTML, CSS, JavaScript. А также применялась технология flex и grid для выравнивания и построения сетки.
 
 ### Ссылка на сайт
+
+https://nateveco.github.io/mesto
