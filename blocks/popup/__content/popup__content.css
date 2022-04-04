@@ -1,5 +1,7 @@
 .popup__content {
-  position: fixed;
-  top: 195px;
-  left: 34%;
+  max-width: 430px;
+  max-height: 330px;
+  position: relative;
+  margin: 195px auto;
+  box-sizing: border-box;
 }
