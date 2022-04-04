@@ -1,0 +1,14 @@
+.popup {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  box-sizing: border-box;
+  /* display: none; */
+}

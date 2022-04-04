@@ -10,3 +10,7 @@
   cursor: pointer;
   background-color: white;
 }
+
+.Elements__Like-Button::after {
+  background-image: url(../../../images/Like-Button-active.png);
+}
