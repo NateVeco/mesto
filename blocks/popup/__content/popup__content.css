@@ -5,3 +5,9 @@
   margin: 195px auto;
   box-sizing: border-box;
 }
+
+@media screen and (min-width: 320px) and (max-width: 700px) {
+  .popup__content {
+    max-width: 282px;
+  }
+}
