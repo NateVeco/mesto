@@ -18,8 +18,8 @@ modalCloseBtn.addEventListener('click', function () {
 
 
 let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__bio');
+let nameInput = document.querySelector('.popup__text_type_name');
+let jobInput = document.querySelector('.popup__text_type_bio');
 let nameChange = document.querySelector('.profile__name');
 let bioChange = document.querySelector('.profile__bio');
 let modalSaveBtn = document.querySelector('.popup__button-save')
