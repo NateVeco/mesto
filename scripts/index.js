@@ -1,3 +1,5 @@
+// Открытие попапа редактирования профиля
+
 const profileEditButton = document.querySelector('.profile__edit-button');
 
 const modalWindow = document.querySelector('.popup');
@@ -15,7 +17,7 @@ modalCloseBtn.addEventListener('click', function () {
     modalWindow.classList.remove('popup_opened');
 })
 
-
+// Форма редактирование профиля и закрытия попапа
 
 let formElement = document.querySelector('.popup__container');
 let nameInput = document.querySelector('.popup__text_type_name');
@@ -39,5 +41,14 @@ modalSaveBtn.addEventListener('click', function () {
     modalWindow.classList.remove('popup_opened');
 });
 
+// Форма добавления карточки
 
+// Добавление карточки
 
+// Лайк карточки
+
+// Удаление карточки
+
+// Открытие попапа с картинкой
+
+// Плавное открытие и закрытие попапов
