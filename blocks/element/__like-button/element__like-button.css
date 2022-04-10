@@ -3,7 +3,7 @@
   width: 22px;
   height: 19px;
   border: none;
-  background-image: url(../../../images/Like-Button.png);
+  background-image: url(../../../images/Like-Button.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px 19px;
@@ -12,5 +12,5 @@
 }
 
 .element__like-button::after {
-  background-image: url(../../../images/Like-Button-active.png);
+  background-image: url(../../../images/Like-Button-active.svg);
 }
