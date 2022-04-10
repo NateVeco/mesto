@@ -1,4 +1,4 @@
-.Profile {
+.profile {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -8,19 +8,19 @@
 }
 
 @media screen and (max-width: 911px) {
-  .Profile {
+  .profile {
     max-width: 720px;
   }
 }
 
 @media screen and (max-width: 750px) {
-  .Profile {
+  .profile {
     max-width: 680px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 700px) {
-  .Profile {
+  .profile {
     max-width: 282px;
     padding-top: 42px;
     flex-direction: column;

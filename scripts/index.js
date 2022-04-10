@@ -1,4 +1,4 @@
-const profileEditButton = document.querySelector('.Profile__Edit-Button');
+const profileEditButton = document.querySelector('.profile__edit-button');
 
 const modalWindow = document.querySelector('.popup');
 
@@ -20,8 +20,8 @@ modalCloseBtn.addEventListener('click', function () {
 let formElement = document.querySelector('.popup__container');
 let nameInput = document.querySelector('.popup__name');
 let jobInput = document.querySelector('.popup__bio');
-let nameChange = document.querySelector('.Profile__name');
-let bioChange = document.querySelector('.Profile__bio');
+let nameChange = document.querySelector('.profile__name');
+let bioChange = document.querySelector('.profile__bio');
 let modalSaveBtn = document.querySelector('.popup__button-save')
 
 

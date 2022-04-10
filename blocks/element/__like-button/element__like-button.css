@@ -1,4 +1,4 @@
-.Elements__Like-Button {
+.element__like-button {
   padding: 0;
   width: 22px;
   height: 19px;
@@ -11,6 +11,6 @@
   background-color: white;
 }
 
-.Elements__Like-Button::after {
+.element__like-button::after {
   background-image: url(../../../images/Like-Button-active.png);
 }

@@ -1,4 +1,4 @@
-.Profile__text {
+.profile__text {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 700px) {
-  .Profile__text {
+  .profile__text {
     justify-content: space-around;
     padding-bottom: 36px;
     padding-top: 26px;

@@ -1,4 +1,4 @@
-.Elements__table {
+.elements__table {
   margin: 0;
   padding: 0;
   display: grid;
@@ -7,13 +7,13 @@
 }
 
 @media screen and (max-width: 911px) {
-  .Elements__table {
+  .elements__table {
     grid-template-columns: 282px 282px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 610px) {
-  .Elements__table {
+  .elements__table {
     grid-template-columns: 282px;
   }
 }
