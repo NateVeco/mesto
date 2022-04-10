@@ -12,8 +12,8 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(../../vendor/fronts/inter/Inter-Medium.woff) format("woff"),
-    url(../../vendor/fronts/inter/Inter-Medium.woff2) format("woff2");
+  src: url(../../vendor/fonts/inter/Inter-Medium.woff) format("woff"),
+    url(../../vendor/fonts/inter/Inter-Medium.woff2) format("woff2");
 }
 
 @font-face {
