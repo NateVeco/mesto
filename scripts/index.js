@@ -13,6 +13,8 @@ let bioChange = document.querySelector('.profile__bio');
 
 function popupOpen(value) {
     modalWindow.classList.add('popup_opened');
+    nameInput.value = nameChange.textContent;
+    jobInput.value = bioChange.textContent;
 }
 
 // Форма редактирования профиля
@@ -32,7 +34,6 @@ function popupClose() {
 };
 
 formElement.addEventListener('submit', formSubmitHandler);
-modalSaveBtn.addEventListener('submit', formSubmitHandler);
 profileEditButton.addEventListener('click', popupOpen);
 modalCloseBtn.addEventListener('click', popupClose);
 
