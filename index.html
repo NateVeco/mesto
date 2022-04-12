@@ -153,6 +153,35 @@
         </div>
       </div>
       <!-- Конец формы -->
+      <!-- Форма для добавления новых карточек -->
+      <div class="popup-add">
+        <div class="popup__content">
+          <button type="button" class="popup__button-close button"></button>
+          <form action="#" name="popup__form" class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <input
+              type="text"
+              value=""
+              placeholder="Название"
+              name="name-element"
+              id="name-element"
+              class="popup__text popup__text_type_name-element"
+              required
+            />
+            <input
+              type="text"
+              value=""
+              placeholder="Ссылка на картинку"
+              name="link"
+              id="link"
+              class="popup__text popup__text_type_link"
+              required
+            />
+            <button type="submit" class="popup__button-save">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <!-- Конец формы -->
     </div>
     <script src="./scripts/index.js"></script>
   </body>
