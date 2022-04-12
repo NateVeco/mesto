@@ -1,4 +1,4 @@
-/* .elements__table {
+.elements__table {
   margin: 0;
   padding: 0;
   display: grid;
@@ -16,4 +16,4 @@
   .elements__table {
     grid-template-columns: 282px;
   }
-} */
+}
