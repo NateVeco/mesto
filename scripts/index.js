@@ -91,7 +91,8 @@ modalCloseBtn.addEventListener('click', popupClose);
 profileAddCloseBtn.addEventListener('click', popupAddClose);
 
 
-// Добавление карточки
+// В пятницу доделать Добавление карточки и настроить лайки
+// в сб - вс остальное доделать
 
 // Лайк карточки
 
