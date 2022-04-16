@@ -38,6 +38,7 @@ const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_bio');
 const nameChange = document.querySelector('.profile__name');
 const bioChange = document.querySelector('.profile__bio');
+
 const profileAddButton = document.querySelector('.profile__add-button');
 const profilePopupAdd = document.querySelector('.popup_type-add-images');
 const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
@@ -76,42 +77,41 @@ function render() {
     elementsTable.append(...html);
 }
 
-// Эта функция для получения нового элемента картинки из темплат и настроенная кнопку удалить - здесь потом сделать кнопку лайк
+// Эта функция для получения нового элемента картинки из темплат и настроенная кнопку удалить 
+// - здесь потом сделать кнопку лайк
 
 function getElement(item) {
     const newImage = template.content.cloneNode(true);
-    const name = newImage.querySelector(".element__title");
+    const name = newImage.querySelector('.element__title');
     const image = newImage.querySelector('.element__image');
-    const removeButton = newImage.querySelector(".trash-button");
+    const removeButton = newImage.querySelector('.trash-button');
 
     name.textContent = item.name;
     image.src = item.link;
 
-    removeButton.addEventListener("click", handleRemoveElement);
+    removeButton.addEventListener('click', handleRemoveElement);
 
     return newImage;
 }
 
 function handleRemoveElement(evt) {
-    const element = evt.target.closest(".element");
+    const element = evt.target.closest('.element');
     element.remove();
 }
 
 // Функция которая добавляет новый элемент - недоделанная
 
-function handleAddElement() {
-    const element = getElement({
+function handleAddElement(evt) {
+    evt.preventDefault();
+    const addElement = getElement({
         name: nameElementInput.value,
         link: linkElementInput.value
     });
 
-    elementsTable.prepend(element);
-    nameElementInput.value = "";
-    linkElementInput.value = "";
+    elementsTable.prepend(addElement);
+    popupAddClose(profilePopupAdd);
 }
 
-
-profileAddSaveBtn.addEventListener("click", handleAddElement);
 
 render();
 
@@ -129,8 +129,10 @@ formElement.addEventListener('submit', formSubmitHandler);
 profileEditButton.addEventListener('click', popupOpen);
 profileAddButton.addEventListener('click', popupAddOpen);
 modalCloseBtn.addEventListener('click', popupClose);
+
 profileAddCloseBtn.addEventListener('click', popupAddClose);
+profileAddSaveBtn.addEventListener('click', handleAddElement);
 
 
-// в сб доделать Добавление карточки и настроить лайки и поправить удаление картинок чтобы сдвигалось на пустое место
+// в сб доделать Добавление карточки и настроить лайки 
 // в вск остается открытие попапа с картинкой и настроить плавное открытие и закрытие попапов
