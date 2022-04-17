@@ -1,0 +1,26 @@
+.popup__content_type_image {
+  max-width: 616px;
+  max-height: 462px;
+  /* max-width: 75vw;
+  max-height: 75vh; */
+}
+
+@media screen and (max-width: 911px) {
+  .popup__content_type_image {
+    max-width: 516px;
+    max-height: 362px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .popup__content_type_image {
+    max-width: 416px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__content_type_image {
+    max-width: 416px;
+    max-height: 162px;
+  }
+}

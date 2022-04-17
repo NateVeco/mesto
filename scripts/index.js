@@ -144,5 +144,3 @@ modalCloseBtn.addEventListener('click', popupClose);
 profileAddCloseBtn.addEventListener('click', popupAddClose);
 profileAddSaveBtn.addEventListener('click', handleAddElement);
 elementImageCloseBtn.addEventListener('click', popupImageClose);
-
-// настроить плавное открытие и закрытие попапов

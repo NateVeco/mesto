@@ -10,7 +10,11 @@
   background-size: cover;
   position: fixed;
   box-sizing: border-box;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in, visibility 1s;
 }
