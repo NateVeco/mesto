@@ -38,16 +38,18 @@ const nameInput = document.querySelector('.popup__text_type_name');
 const jobInput = document.querySelector('.popup__text_type_bio');
 const nameChange = document.querySelector('.profile__name');
 const bioChange = document.querySelector('.profile__bio');
-
 const profileAddButton = document.querySelector('.profile__add-button');
 const profilePopupAdd = document.querySelector('.popup_type-add-images');
 const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
 const nameElementInput = profilePopupAdd.querySelector('.popup__text_type_name-element');
 const linkElementInput = profilePopupAdd.querySelector('.popup__text_type_link-element');
-const profileAddSaveBtn = document.querySelector('.popup__button-save');
+const profileAddSaveBtn = profilePopupAdd.querySelector('.popup__button-save');
 const elementsTable = document.querySelector('.elements__table');
 const template = document.querySelector('.template');
-
+const elementImageOpened = document.querySelector('.popup_type-opened-image');
+const elementImage = elementImageOpened.querySelector('.popup__image');
+const elementTitleImage = elementImageOpened.querySelector('.popup__title-image');
+const elementImageCloseBtn = elementImageOpened.querySelector('.popup__button-close');
 
 
 function popupOpen(value) {
@@ -60,6 +62,10 @@ function popupAddOpen() {
     profilePopupAdd.classList.add('popup_opened');
 }
 
+function popupImageOpen() {
+    elementImageOpened.classList.add('popup_opened');
+}
+
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
@@ -68,38 +74,43 @@ function formSubmitHandler(evt) {
     modalWindow.classList.remove('popup_opened');
 }
 
-// Добавление новой карточки
-
-// Эта функция, чтобы получить из темпал в верстку картинки из массива
-
 function render() {
     const html = initialImages.map(getElement);
     elementsTable.append(...html);
 }
 
-// Эта функция для получения нового элемента картинки из темплат и настроенная кнопку удалить 
-// - здесь потом сделать кнопку лайк
 
 function getElement(item) {
     const newImage = template.content.cloneNode(true);
-    const name = newImage.querySelector('.element__title');
-    const image = newImage.querySelector('.element__image');
+    const nameElement = newImage.querySelector('.element__title');
+    const imageElement = newImage.querySelector('.element__image');
     const removeButton = newImage.querySelector('.trash-button');
+    const likeButton = newImage.querySelector('.element__like-button');
 
-    name.textContent = item.name;
-    image.src = item.link;
+    nameElement.textContent = item.name;
+    imageElement.src = item.link;
 
     removeButton.addEventListener('click', handleRemoveElement);
+    likeButton.addEventListener('click', saveLike);
+    imageElement.addEventListener('click', () => {
+        elementTitleImage.textContent = item.name;
+        elementImage.src = item.link;
+        popupImageOpen();
+    });
 
     return newImage;
 }
 
 function handleRemoveElement(evt) {
-    const element = evt.target.closest('.element');
-    element.remove();
+    const elementImage = evt.target.closest('.element');
+    elementImage.remove();
 }
 
-// Функция которая добавляет новый элемент - недоделанная
+function saveLike(evt) {
+    const elementLike = evt.target.closest('.element__like-button');
+    elementLike.classList.add('element__like-button_active');
+}
+
 
 function handleAddElement(evt) {
     evt.preventDefault();
@@ -112,10 +123,7 @@ function handleAddElement(evt) {
     popupAddClose(profilePopupAdd);
 }
 
-
 render();
-
-// Закрытие попапов 
 
 function popupClose() {
     modalWindow.classList.remove('popup_opened')
@@ -125,14 +133,16 @@ function popupAddClose() {
     profilePopupAdd.classList.remove('popup_opened')
 };
 
+function popupImageClose() {
+    elementImageOpened.classList.remove('popup_opened')
+};
+
 formElement.addEventListener('submit', formSubmitHandler);
 profileEditButton.addEventListener('click', popupOpen);
 profileAddButton.addEventListener('click', popupAddOpen);
 modalCloseBtn.addEventListener('click', popupClose);
-
 profileAddCloseBtn.addEventListener('click', popupAddClose);
 profileAddSaveBtn.addEventListener('click', handleAddElement);
+elementImageCloseBtn.addEventListener('click', popupImageClose);
 
-
-// в сб доделать Добавление карточки и настроить лайки 
-// в вск остается открытие попапа с картинкой и настроить плавное открытие и закрытие попапов
+// настроить плавное открытие и закрытие попапов
