@@ -33,21 +33,19 @@ const initialImages = [{
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const profilePopupEdit = document.querySelector('.popup_edit-profile');
 const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
-const profileForm = profilePopupEdit.querySelector('.popup__container');
+const profileEditForm = profilePopupEdit.querySelector('.popup__container');
 const nameProfileInput = profilePopupEdit.querySelector('.popup__text_type_name');
 const bioProfileInput = profilePopupEdit.querySelector('.popup__text_type_bio');
 const nameProfileChange = document.querySelector('.profile__name');
 const bioProfileChange = document.querySelector('.profile__bio');
-
 const profileAddBtn = document.querySelector('.profile__add-button');
 const profilePopupAdd = document.querySelector('.popup_add-image');
 const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
 const nameElementInput = profilePopupAdd.querySelector('.popup__text_type_name-element');
 const linkElementInput = profilePopupAdd.querySelector('.popup__text_type_link-element');
-const profileAddSaveBtn = profilePopupAdd.querySelector('.popup__button-save');
+const profileAddForm = profilePopupAdd.querySelector('.popup__container');
 const elementsTable = document.querySelector('.elements__table');
 const template = document.querySelector('.template');
-
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
 const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
@@ -57,7 +55,7 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-function formSubmitHandler(evt) {
+function handleProfileEditFormSubmit(evt) {
     evt.preventDefault();
 
     nameProfileChange.textContent = nameProfileInput.value;
@@ -80,12 +78,14 @@ function getElement(item) {
 
     nameElement.textContent = item.name;
     imageElement.src = item.link;
+    imageElement.alt = item.name;
 
     removeButton.addEventListener('click', handleRemoveElement);
-    likeButton.addEventListener('click', saveLike);
+    likeButton.addEventListener('click', toggleLike);
     imageElement.addEventListener('click', () => {
         elementTitleImage.textContent = item.name;
         elementImage.src = item.link;
+        elementImage.alt = item.name;
         openPopup(elementPopupImageOpened);
     });
 
@@ -97,20 +97,21 @@ function handleRemoveElement(evt) {
     elementImage.remove();
 }
 
-function saveLike(evt) {
-    const elementLike = evt.target.closest('.element__like-button');
-    elementLike.classList.add('element__like-button_active');
+function toggleLike(evt) {
+    evt.target.classList.toggle('element__like-button_active');
 }
 
 
-function handleAddElement(evt) {
+function handleAddElementFormSubmit(evt) {
     evt.preventDefault();
     const addElement = getElement({
         name: nameElementInput.value,
         link: linkElementInput.value
     });
 
+    profileAddForm.reset();
     elementsTable.prepend(addElement);
+
     closePopup(profilePopupAdd);
 }
 
@@ -129,10 +130,8 @@ profileEditBtn.addEventListener('click', () => {
     openPopup(profilePopupEdit);
 });
 profileAddBtn.addEventListener('click', () => openPopup(profilePopupAdd));
-
-profileForm.addEventListener('submit', formSubmitHandler);
-profileAddSaveBtn.addEventListener('click', handleAddElement);
-
+profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
+profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
 profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
 profileAddCloseBtn.addEventListener('click', () => closePopup(profilePopupAdd));
 elementImageCloseBtn.addEventListener('click', () => closePopup(elementPopupImageOpened));
