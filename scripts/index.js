@@ -29,49 +29,40 @@ const initialImages = [{
     }
 ];
 
-const profileEditButton = document.querySelector('.profile__edit-button');
-const modalWindow = document.querySelector('.popup');
-const modalCloseBtn = document.querySelector('.popup__button-close');
-const modalSaveBtn = document.querySelector('.popup__button-save');
-const formElement = document.querySelector('.popup__container');
-const nameInput = document.querySelector('.popup__text_type_name');
-const jobInput = document.querySelector('.popup__text_type_bio');
-const nameChange = document.querySelector('.profile__name');
-const bioChange = document.querySelector('.profile__bio');
-const profileAddButton = document.querySelector('.profile__add-button');
-const profilePopupAdd = document.querySelector('.popup_type-add-images');
+
+const profileEditBtn = document.querySelector('.profile__edit-button');
+const profilePopupEdit = document.querySelector('.popup_edit-profile');
+const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
+const profileForm = profilePopupEdit.querySelector('.popup__container');
+const nameProfileInput = profilePopupEdit.querySelector('.popup__text_type_name');
+const bioProfileInput = profilePopupEdit.querySelector('.popup__text_type_bio');
+const nameProfileChange = document.querySelector('.profile__name');
+const bioProfileChange = document.querySelector('.profile__bio');
+
+const profileAddBtn = document.querySelector('.profile__add-button');
+const profilePopupAdd = document.querySelector('.popup_add-image');
 const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
 const nameElementInput = profilePopupAdd.querySelector('.popup__text_type_name-element');
 const linkElementInput = profilePopupAdd.querySelector('.popup__text_type_link-element');
 const profileAddSaveBtn = profilePopupAdd.querySelector('.popup__button-save');
 const elementsTable = document.querySelector('.elements__table');
 const template = document.querySelector('.template');
-const elementImageOpened = document.querySelector('.popup_type-opened-image');
-const elementImage = elementImageOpened.querySelector('.popup__image');
-const elementTitleImage = elementImageOpened.querySelector('.popup__title-image');
-const elementImageCloseBtn = elementImageOpened.querySelector('.popup__button-close');
 
+const elementPopupImageOpened = document.querySelector('.popup_opened-image');
+const elementImage = elementPopupImageOpened.querySelector('.popup__image');
+const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
+const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
 
-function popupOpen(value) {
-    modalWindow.classList.add('popup_opened');
-    nameInput.value = nameChange.textContent;
-    jobInput.value = bioChange.textContent;
-}
-
-function popupAddOpen() {
-    profilePopupAdd.classList.add('popup_opened');
-}
-
-function popupImageOpen() {
-    elementImageOpened.classList.add('popup_opened');
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
 }
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
-    nameChange.textContent = nameInput.value;
-    bioChange.textContent = jobInput.value;
-    modalWindow.classList.remove('popup_opened');
+    nameProfileChange.textContent = nameProfileInput.value;
+    bioProfileChange.textContent = bioProfileInput.value;
+    profilePopupEdit.classList.remove('popup_opened');
 }
 
 function render() {
@@ -95,7 +86,7 @@ function getElement(item) {
     imageElement.addEventListener('click', () => {
         elementTitleImage.textContent = item.name;
         elementImage.src = item.link;
-        popupImageOpen();
+        openPopup(elementPopupImageOpened);
     });
 
     return newImage;
@@ -120,27 +111,28 @@ function handleAddElement(evt) {
     });
 
     elementsTable.prepend(addElement);
-    popupAddClose(profilePopupAdd);
+    closePopup(profilePopupAdd);
 }
 
 render();
 
-function popupClose() {
-    modalWindow.classList.remove('popup_opened')
+
+function closePopup(popup) {
+    popup.classList.remove('popup_opened')
 };
 
-function popupAddClose() {
-    profilePopupAdd.classList.remove('popup_opened')
-};
 
-function popupImageClose() {
-    elementImageOpened.classList.remove('popup_opened')
-};
 
-formElement.addEventListener('submit', formSubmitHandler);
-profileEditButton.addEventListener('click', popupOpen);
-profileAddButton.addEventListener('click', popupAddOpen);
-modalCloseBtn.addEventListener('click', popupClose);
-profileAddCloseBtn.addEventListener('click', popupAddClose);
+profileEditBtn.addEventListener('click', () => {
+    nameProfileInput.value = nameProfileChange.textContent;
+    bioProfileInput.value = bioProfileChange.textContent;
+    openPopup(profilePopupEdit);
+});
+profileAddBtn.addEventListener('click', () => openPopup(profilePopupAdd));
+
+profileForm.addEventListener('submit', formSubmitHandler);
 profileAddSaveBtn.addEventListener('click', handleAddElement);
-elementImageCloseBtn.addEventListener('click', popupImageClose);
+
+profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
+profileAddCloseBtn.addEventListener('click', () => closePopup(profilePopupAdd));
+elementImageCloseBtn.addEventListener('click', () => closePopup(elementPopupImageOpened));
