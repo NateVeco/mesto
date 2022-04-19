@@ -60,7 +60,7 @@ function handleProfileEditFormSubmit(evt) {
 
     nameProfileChange.textContent = nameProfileInput.value;
     bioProfileChange.textContent = bioProfileInput.value;
-    profilePopupEdit.classList.remove('popup_opened');
+    closePopup(profilePopupEdit);
 }
 
 function render() {
