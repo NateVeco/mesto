@@ -44,23 +44,25 @@
             value=""
             placeholder="Жак-Ив Кусто"
             name="name"
-            id="name"
+            id="name-profile"
             class="popup__text popup__text_type_name"
             minlength="2"
             maxlength="40"
             required
           />
+          <span class="popup__type_error" id="name-profile-error"></span>
           <input
             type="text"
             value=""
             placeholder="Исследователь океана"
             name="bio"
-            id="bio"
+            id="bio-profile"
             class="popup__text popup__text_type_bio"
             minlength="2"
             maxlength="200"
             required
           />
+          <span class="popup__type_error" id="bio-profile-error"></span>
           <button type="submit" class="popup__button-save">Сохранить</button>
         </form>
       </div>
@@ -81,15 +83,17 @@
             class="popup__text popup__text_type_name-element"
             required
           />
+          <span class="popup__type_error" id="name-element-error"></span>
           <input
             type="url"
             value=""
             placeholder="Ссылка на картинку"
             name="link"
-            id="link"
+            id="link-element"
             class="popup__text popup__text_type_link-element"
             required
           />
+          <span class="popup__type_error" id="link-element-error"></span>
           <button type="submit" class="popup__button-save">Создать</button>
         </form>
       </div>
