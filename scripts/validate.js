@@ -1,13 +1,13 @@
-function enableValidation(formSelector) {
-    const profileForm = document.querySelector(formSelector.formSelector);
-    const profileInputs = profileForm.querySelectorAll(formSelector.inputSelector);
+function enableValidation(formConfig) {
+    const profileForm = document.querySelector(formConfig.formSelector);
+    const profileInputs = profileForm.querySelectorAll(formConfig.inputSelector);
 
     profileInputs.forEach((element) => {
-        element.addEventListener('input', handleProfileFormInput);
+        element.addEventListener('input', (evt) => handleProfileFormInput(evt, profileForm, formConfig));
     });
     profileForm.addEventListener('submit', (evt) => handleProfileFormSubmit(evt));
-    // profileForm.addEventListener('input', (evt) => handleProfileFormInput(evt));
 
+    disableBtn(profileForm, formConfig);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -15,14 +15,10 @@ function handleProfileFormSubmit(evt) {
 
     const profileForm = evt.currentTarget;
     console.log(profileForm.checkValidity());
-    if (profileForm.checkValidity()) {
-        alert('yes!')
-    } else {
-        alert('фейл');
-    }
+    if (profileForm.checkValidity()) {} else {}
 }
 
-function handleProfileFormInput(evt) {
+function handleProfileFormInput(evt, profileForm, formConfig) {
     const profileInput = evt.target;
     const error = document.querySelector(`#${profileInput.id}-error`);
 
@@ -31,24 +27,24 @@ function handleProfileFormInput(evt) {
     } else {
         error.textContent = profileInput.validationMessage;
     }
+    disableBtn(profileForm, formConfig);
 }
 
+function disableBtn(profileForm, formConfig) {
+    const profileBtn = document.querySelector(formConfig.buttonSelector);
+    profileBtn.classList.toggle('popup__button-submit_type_disabled', !profileForm.checkValidity());
+    profileBtn.disabled = !profileForm.checkValidity();
+}
+
+
 enableValidation({
-    formSelector: '.popup__container',
-    inputSelector: '.popup__input'
-    // submitButtonSelector: '.popup__button',
-    // inactiveButtonClass: 'popup__button_disabled',
-    // inputErrorClass: 'popup__input_type_error',
-    // errorClass: 'popup__error_visible'
+    formSelector: '.popup__form-edit',
+    inputSelector: '.popup__input-edit',
+    buttonSelector: '.popup__button-submit_save'
 });
 
-
-
-
-// еще:
-// неактивность кнопки
-// Закрытие попапа кликом на оверлей
-// Закрытие попапа нажатием на Esc
-
-// валидация второй формы
-// в поле« Ссылка на картинку» должен быть URL.
+enableValidation({
+    formSelector: '.popup__form-add',
+    inputSelector: '.popup__input-add',
+    buttonSelector: '.popup__button-submit_creat'
+});

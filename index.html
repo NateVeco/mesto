@@ -37,7 +37,12 @@
     <div class="popup popup_edit-profile">
       <div class="popup__content">
         <button type="button" class="popup__button-close button"></button>
-        <form action="#" name="edit" class="popup__container" novalidate>
+        <form
+          action="#"
+          name="edit"
+          class="popup__container popup__form-edit"
+          novalidate
+        >
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             type="text"
@@ -45,7 +50,7 @@
             placeholder="Жак-Ив Кусто"
             name="name"
             id="name-profile"
-            class="popup__input popup__text_type_name"
+            class="popup__input popup__input-edit popup__text_type_name"
             minlength="2"
             maxlength="40"
             required
@@ -57,13 +62,18 @@
             placeholder="Исследователь океана"
             name="bio"
             id="bio-profile"
-            class="popup__input popup__text_type_bio"
+            class="popup__input popup__input-edit popup__text_type_bio"
             minlength="2"
             maxlength="200"
             required
           />
           <span class="popup__error" id="bio-profile-error"></span>
-          <button type="submit" class="popup__button-save">Сохранить</button>
+          <button
+            type="submit"
+            class="popup__button-submit popup__button-submit_save"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
@@ -72,7 +82,12 @@
     <div class="popup popup_add-image">
       <div class="popup__content">
         <button type="button" class="popup__button-close button"></button>
-        <form action="#" name="add" class="popup__container" novalidate>
+        <form
+          action="#"
+          name="add"
+          class="popup__container popup__form-add"
+          novalidate
+        >
           <h2 class="popup__title">Новое место</h2>
           <input
             type="text"
@@ -80,7 +95,7 @@
             placeholder="Название"
             name="name-element"
             id="name-element"
-            class="popup__input popup__text_type_name-element"
+            class="popup__input popup__input-add popup__text_type_name-element"
             minlength="2"
             maxlength="30"
             required
@@ -92,11 +107,16 @@
             placeholder="Ссылка на картинку"
             name="link"
             id="link-element"
-            class="popup__input popup__text_type_link-element"
+            class="popup__input popup__input-add popup__text_type_link-element"
             required
           />
           <span class="popup__error" id="link-element-error"></span>
-          <button type="submit" class="popup__button-save">Создать</button>
+          <button
+            type="submit"
+            class="popup__button-submit popup__button-submit_creat"
+          >
+            Создать
+          </button>
         </form>
       </div>
     </div>
