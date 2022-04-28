@@ -29,7 +29,7 @@ const initialImages = [{
     }
 ];
 
-
+const popups = document.querySelector('.popup');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const profilePopupEdit = document.querySelector('.popup_edit-profile');
 const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
@@ -51,23 +51,23 @@ const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
 const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-}
+function togglePopup(popups) {
+    popups.classList.toggle('popup_opened');
+};
+
 
 function handleProfileEditFormSubmit(evt) {
     evt.preventDefault();
 
     nameProfileChange.textContent = nameProfileInput.value;
     bioProfileChange.textContent = bioProfileInput.value;
-    closePopup(profilePopupEdit);
+    togglePopup(profilePopupEdit);
 }
 
 function render() {
     const html = initialImages.map(getElement);
     elementsTable.append(...html);
 }
-
 
 function getElement(item) {
     const newImage = template.content.cloneNode(true);
@@ -86,7 +86,7 @@ function getElement(item) {
         elementTitleImage.textContent = item.name;
         elementImage.src = item.link;
         elementImage.alt = item.name;
-        openPopup(elementPopupImageOpened);
+        togglePopup(elementPopupImageOpened);
     });
 
     return newImage;
@@ -112,26 +112,26 @@ function handleAddElementFormSubmit(evt) {
     profileAddForm.reset();
     elementsTable.prepend(addElement);
 
-    closePopup(profilePopupAdd);
+    togglePopup(profilePopupAdd);
 }
 
 render();
 
-
-function closePopup(popup) {
-    popup.classList.remove('popup_opened')
+function closeOnOverlay(evt) {
+    if (evt.target === evt.currentTarget) {
+        togglePopup(popups);
+    }
 };
-
-
 
 profileEditBtn.addEventListener('click', () => {
     nameProfileInput.value = nameProfileChange.textContent;
     bioProfileInput.value = bioProfileChange.textContent;
-    openPopup(profilePopupEdit);
+    togglePopup(profilePopupEdit);
 });
-profileAddBtn.addEventListener('click', () => openPopup(profilePopupAdd));
+profileAddBtn.addEventListener('click', () => togglePopup(profilePopupAdd));
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
 profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
-profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
-profileAddCloseBtn.addEventListener('click', () => closePopup(profilePopupAdd));
-elementImageCloseBtn.addEventListener('click', () => closePopup(elementPopupImageOpened));
+profileCloseBtn.addEventListener('click', () => togglePopup(profilePopupEdit));
+profileAddCloseBtn.addEventListener('click', () => togglePopup(profilePopupAdd));
+elementImageCloseBtn.addEventListener('click', () => togglePopup(elementPopupImageOpened));
+popups.addEventListener('click', closeOnOverlay);
