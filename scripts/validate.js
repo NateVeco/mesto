@@ -15,16 +15,22 @@ function handleProfileFormSubmit(evt) {
 
     const profileForm = evt.currentTarget;
     console.log(profileForm.checkValidity());
-    if (profileForm.checkValidity()) {} else {}
+    // if (profileForm.checkValidity()) {
+
+    // } else {}
 }
 
 function handleProfileFormInput(evt, profileForm, formConfig) {
     const profileInput = evt.target;
     const error = document.querySelector(`#${profileInput.id}-error`);
+    profileInput.classList.add(formConfig.errorClass);
+
 
     if (profileInput.validity.valid) {
         error.textContent = '';
+        profileInput.classList.remove(formConfig.errorClass);
     } else {
+
         error.textContent = profileInput.validationMessage;
     }
     disableBtn(profileForm, formConfig);
@@ -40,11 +46,14 @@ function disableBtn(profileForm, formConfig) {
 enableValidation({
     formSelector: '.popup__form-edit',
     inputSelector: '.popup__input-edit',
-    buttonSelector: '.popup__button-submit_save'
+    buttonSelector: '.popup__button-submit_save',
+    errorClass: 'popup__input_type_error'
 });
 
 enableValidation({
     formSelector: '.popup__form-add',
     inputSelector: '.popup__input-add',
-    buttonSelector: '.popup__button-submit_creat'
+    buttonSelector: '.popup__button-submit_creat',
+    // inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input_type_error'
 });
