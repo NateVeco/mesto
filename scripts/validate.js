@@ -19,10 +19,13 @@ function handleProfileFormSubmit(evt) {
 
 function handleProfileFormInput(evt) {
     const profileInput = evt.target;
-    const error = document.querySelector('#${profileInput.id}-error');
+    const error = document.querySelector(`#${profileInput.id}-error`);
 
-    console.log(error);
-
+    if (profileInput.validity.valid) {
+        error.textContent = '';
+    } else {
+        error.textContent = 'Ошибка';
+    }
 }
 
 
