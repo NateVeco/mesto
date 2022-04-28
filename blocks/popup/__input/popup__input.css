@@ -1,4 +1,4 @@
-.popup__text {
+.popup__input {
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -13,6 +13,6 @@
   margin-bottom: 30px;
 }
 
-.popup__text:last-child {
+.popup__input:last-child {
   margin: 48px;
 }
