@@ -29,7 +29,8 @@ const initialImages = [{
     }
 ];
 
-const popups = document.querySelector('.popup');
+
+// const popups = document.querySelector('.popup');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const profilePopupEdit = document.querySelector('.popup_edit-profile');
 const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
@@ -51,17 +52,17 @@ const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
 const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
 
-function togglePopup(popups) {
-    popups.classList.toggle('popup_opened');
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+    // popup.addEventListener('keydown', closePopup)
 };
-
 
 function handleProfileEditFormSubmit(evt) {
     evt.preventDefault();
 
     nameProfileChange.textContent = nameProfileInput.value;
     bioProfileChange.textContent = bioProfileInput.value;
-    togglePopup(profilePopupEdit);
+    closePopup(profilePopupEdit);
 }
 
 function render() {
@@ -86,7 +87,7 @@ function getElement(item) {
         elementTitleImage.textContent = item.name;
         elementImage.src = item.link;
         elementImage.alt = item.name;
-        togglePopup(elementPopupImageOpened);
+        openPopup(elementPopupImageOpened);
     });
 
     return newImage;
@@ -112,26 +113,40 @@ function handleAddElementFormSubmit(evt) {
     profileAddForm.reset();
     elementsTable.prepend(addElement);
 
-    togglePopup(profilePopupAdd);
+    closePopup(profilePopupAdd);
 }
 
 render();
 
-function closeOnOverlay(evt) {
-    if (evt.target === evt.currentTarget) {
-        togglePopup(popups);
-    }
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+    // popup.removeEventListener('keydown', openPopup)
 };
+
+// function closePopupEsc(evt) {
+//     if (evt.key === 27) {
+//         closePopup()
+//     }
+// };
+
+
+// function closeOnOverlay(evt, popup) {
+//     if (evt.target === evt.currentTarget) {
+//         closePopup(popup);
+//     }
+
+// };
+
 
 profileEditBtn.addEventListener('click', () => {
     nameProfileInput.value = nameProfileChange.textContent;
     bioProfileInput.value = bioProfileChange.textContent;
-    togglePopup(profilePopupEdit);
+    openPopup(profilePopupEdit);
 });
-profileAddBtn.addEventListener('click', () => togglePopup(profilePopupAdd));
+profileAddBtn.addEventListener('click', () => openPopup(profilePopupAdd));
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
 profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
-profileCloseBtn.addEventListener('click', () => togglePopup(profilePopupEdit));
-profileAddCloseBtn.addEventListener('click', () => togglePopup(profilePopupAdd));
-elementImageCloseBtn.addEventListener('click', () => togglePopup(elementPopupImageOpened));
-popups.addEventListener('click', closeOnOverlay);
+profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
+profileAddCloseBtn.addEventListener('click', () => closePopup(profilePopupAdd));
+elementImageCloseBtn.addEventListener('click', () => closePopup(elementPopupImageOpened));
+// popups.addEventListener('click', closeOnOverlay);
