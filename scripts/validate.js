@@ -11,8 +11,9 @@ function enableValidation(formConfig) {
 }
 
 function handleProfileFormSubmit(evt) {
+
     const profileForm = evt.currentTarget;
-    profileForm.checkValidity();
+    (profileForm.checkValidity());
 }
 
 function handleProfileFormInput(evt, profileForm, formConfig) {
@@ -39,17 +40,9 @@ function disableBtn(profileForm, formConfig) {
 
 
 enableValidation({
-    formSelector: '.popup__form-edit',
-    inputSelector: '.popup__input-edit',
-    buttonSelector: '.popup__button-submit_save',
-    inactiveButtonClass: 'popup__button-submit_type_disabled',
-    errorClass: 'popup__input_type_error'
-});
-
-enableValidation({
-    formSelector: '.popup__form-add',
-    inputSelector: '.popup__input-add',
-    buttonSelector: '.popup__button-submit_creat',
+    formSelector: '.popup__container',
+    inputSelector: '.popup__input',
+    buttonSelector: '.popup__button-submit',
     inactiveButtonClass: 'popup__button-submit_type_disabled',
     errorClass: 'popup__input_type_error'
 });

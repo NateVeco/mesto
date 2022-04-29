@@ -1,7 +1,7 @@
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const profilePopupEdit = document.querySelector('.popup_edit-profile');
 const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
-const profileEditForm = profilePopupEdit.querySelector('.popup__form-edit');
+const profileEditForm = profilePopupEdit.querySelector('.popup__container');
 const nameProfileInput = profilePopupEdit.querySelector('.popup__input_name');
 const bioProfileInput = profilePopupEdit.querySelector('.popup__input_bio');
 const nameProfileChange = document.querySelector('.profile__name');
@@ -11,7 +11,7 @@ const profilePopupAdd = document.querySelector('.popup_add-image');
 const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
 const nameElementInput = profilePopupAdd.querySelector('.popup__input_name-element');
 const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-element');
-const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
+const profileAddForm = profilePopupAdd.querySelector('.popup__container');
 const elementsTable = document.querySelector('.elements__table');
 const template = document.querySelector('.template');
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
