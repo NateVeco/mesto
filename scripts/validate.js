@@ -8,7 +8,8 @@ function enableValidation(formConfig) {
     profileForm.addEventListener('submit', (evt) => handleProfileFormSubmit(evt));
 
     disableBtn(profileForm, formConfig);
-}
+};
+
 
 function handleProfileFormSubmit(evt) {
 
