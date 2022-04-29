@@ -148,7 +148,7 @@ profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
 profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
 profileAddCloseBtn.addEventListener('click', () => closePopup(profilePopupAdd));
 elementImageCloseBtn.addEventListener('click', () => closePopup(elementPopupImageOpened));
-document.addEventListener('click', function () {
+document.addEventListener('click', () => {
     const popups = document.querySelectorAll('.popup');
     popups.forEach(function (popup) {
         popup.addEventListener('click', function (evt) {
