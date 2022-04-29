@@ -11,10 +11,8 @@ function enableValidation(formConfig) {
 }
 
 function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-
     const profileForm = evt.currentTarget;
-    console.log(profileForm.checkValidity());
+    profileForm.checkValidity();
 }
 
 function handleProfileFormInput(evt, profileForm, formConfig) {
