@@ -54,7 +54,8 @@ const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__butt
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    // popup.addEventListener('keydown', closePopup)
+    document.addEventListener('keydown', closePopupEsc);
+    // popup.addEventListener('click', closeOnOverlay);
 };
 
 function handleProfileEditFormSubmit(evt) {
@@ -120,14 +121,15 @@ render();
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    // popup.removeEventListener('keydown', openPopup)
+    document.removeEventListener('keydown', closePopupEsc);
 };
 
-// function closePopupEsc(evt) {
-//     if (evt.key === 27) {
-//         closePopup()
-//     }
-// };
+function closePopupEsc(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+};
 
 
 // function closeOnOverlay(evt, popup) {
