@@ -1,63 +1,77 @@
-// новая версия 2.0
-
-function enableValidation(formConfig) {
-    const formList = Array.from(document.querySelectorAll(formConfig.formSelector));
-    const inputList = Array.from(document.querySelectorAll(formConfig.inputSelector));
-
-    inputList.forEach((element) => {
-        element.addEventListener('input', (evt) => handleProfileFormInput(evt, formList, formConfig));
-    });
-
-    formList.forEach((element) => {
-        element.addEventListener('submit', (evt) => handleProfileFormSubmit(evt));
-    });
-
-    disableBtn(formList, formConfig);
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add('popup__input_type_error');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('popup__error_active');
 };
 
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove('popup__input_type_error');
+    errorElement.classList.remove('popup__error_active');
+    errorElement.textContent = '';
+};
 
-function handleProfileFormSubmit(evt) {
-
-    const formList = evt.currentTarget;
-    (formList.checkValidity());
-}
-
-function handleProfileFormInput(evt, formConfig, formList) {
-    const inputList = evt.target;
-    const error = document.querySelector(`#${inputList.id}-error`);
-    inputList.classList.add(formConfig.errorClass);
-
-
-    if (inputList.validity.valid) {
-        error.textContent = '';
-        inputList.classList.remove(formConfig.errorClass);
+const isValid = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+        showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
-        error.textContent = inputList.validationMessage;
+        hideInputError(formElement, inputElement);
     }
+};
 
-}
+const setEventListeners = (formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    const buttonElement = formElement.querySelector('.popup__button-submit');
 
-// function disableBtn(formConfig) {
-//     const profileBtn = Array.from(document.querySelectorAll(formConfig.buttonSelector));
+    toggleButtonState(inputList, buttonElement);
 
-//     // profileBtn.forEach((button) => {
-//     //     button.classList.add(formConfig.inactiveButtonClass);
-//     // });
-// };
+    inputList.forEach((inputElement) => {
+        inputElement.addEventListener('input', () => {
+            isValid(formElement, inputElement);
+
+            toggleButtonState(inputList, buttonElement);
+        });
+    });
+};
+
+//  nen
+const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.popup__container'));
+    formList.forEach((formElement) => {
+        formElement.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+        });
+        setEventListeners(formElement);
+    });
+};
+
+const hasInvalidInput = (inputList) => {
+
+    return inputList.some((inputElement) => {
+
+        return !inputElement.validity.valid;
+    })
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+    if (hasInvalidInput(inputList)) {
+        buttonElement.classList.add('popup__button-submit_type_disabled');
+    } else {
+        buttonElement.classList.remove('popup__button-submit_type_disabled');
+    }
+};
+
+// enableValidation({
+//     formSelector: '.popup__container',
+//     inputSelector: '.popup__input',
+//     buttonSelector: '.popup__button-submit',
+//     inactiveButtonClass: 'popup__button-submit_type_disabled',
+//     inputErrorClass: 'popup__input_type_error',
+//     errorClass: 'popup__error_active'
+// });
+
+enableValidation();
 
 
-// function disableBtn(formList, formConfig) {
-//     const profileBtn = document.querySelector(formConfig.buttonSelector);
-//     profileBtn.classList.toggle(formConfig.inactiveButtonClass, !profileForm.checkValidity());
-//     profileBtn.disabled = !profileForm.checkValidity();
-// }
-
-
-
-enableValidation({
-    formSelector: '.popup__container',
-    inputSelector: '.popup__input',
-    buttonSelector: '.popup__button-submit',
-    inactiveButtonClass: 'popup__button-submit_type_disabled',
-    errorClass: 'popup__input_type_error'
-});
+// 

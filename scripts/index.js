@@ -25,9 +25,7 @@ function openPopup(popup) {
     popup.addEventListener('click', closeOnOverlay);
 };
 
-function handleProfileEditFormSubmit(evt) {
-    evt.preventDefault();
-
+function handleProfileEditFormSubmit() {
     nameProfileChange.textContent = nameProfileInput.value;
     bioProfileChange.textContent = bioProfileInput.value;
     closePopup(profilePopupEdit);
@@ -77,12 +75,14 @@ function handleAddElementFormSubmit(evt) {
         name: nameElementInput.value,
         link: linkElementInput.value
     });
-
     profileAddForm.reset();
     elementsTable.prepend(addElement);
 
     closePopup(profilePopupAdd);
-}
+
+};
+
+
 
 render();
 
