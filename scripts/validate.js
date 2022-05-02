@@ -1,43 +1,57 @@
+// новая версия 2.0
+
 function enableValidation(formConfig) {
-    const profileForm = document.querySelector(formConfig.formSelector);
-    const profileInputs = profileForm.querySelectorAll(formConfig.inputSelector);
+    const formList = Array.from(document.querySelectorAll(formConfig.formSelector));
+    const inputList = Array.from(document.querySelectorAll(formConfig.inputSelector));
 
-    profileInputs.forEach((element) => {
-        element.addEventListener('input', (evt) => handleProfileFormInput(evt, profileForm, formConfig));
+    inputList.forEach((element) => {
+        element.addEventListener('input', (evt) => handleProfileFormInput(evt, formList, formConfig));
     });
-    profileForm.addEventListener('submit', (evt) => handleProfileFormSubmit(evt));
 
-    disableBtn(profileForm, formConfig);
+    formList.forEach((element) => {
+        element.addEventListener('submit', (evt) => handleProfileFormSubmit(evt));
+    });
+
+    disableBtn(formList, formConfig);
 };
 
 
 function handleProfileFormSubmit(evt) {
 
-    const profileForm = evt.currentTarget;
-    (profileForm.checkValidity());
+    const formList = evt.currentTarget;
+    (formList.checkValidity());
 }
 
-function handleProfileFormInput(evt, profileForm, formConfig) {
-    const profileInput = evt.target;
-    const error = document.querySelector(`#${profileInput.id}-error`);
-    profileInput.classList.add(formConfig.errorClass);
+function handleProfileFormInput(evt, formConfig, formList) {
+    const inputList = evt.target;
+    const error = document.querySelector(`#${inputList.id}-error`);
+    inputList.classList.add(formConfig.errorClass);
 
 
-    if (profileInput.validity.valid) {
+    if (inputList.validity.valid) {
         error.textContent = '';
-        profileInput.classList.remove(formConfig.errorClass);
+        inputList.classList.remove(formConfig.errorClass);
     } else {
-
-        error.textContent = profileInput.validationMessage;
+        error.textContent = inputList.validationMessage;
     }
-    disableBtn(profileForm, formConfig);
+
 }
 
-function disableBtn(profileForm, formConfig) {
-    const profileBtn = document.querySelector(formConfig.buttonSelector);
-    profileBtn.classList.toggle(formConfig.inactiveButtonClass, !profileForm.checkValidity());
-    profileBtn.disabled = !profileForm.checkValidity();
-}
+// function disableBtn(formConfig) {
+//     const profileBtn = Array.from(document.querySelectorAll(formConfig.buttonSelector));
+
+//     // profileBtn.forEach((button) => {
+//     //     button.classList.add(formConfig.inactiveButtonClass);
+//     // });
+// };
+
+
+// function disableBtn(formList, formConfig) {
+//     const profileBtn = document.querySelector(formConfig.buttonSelector);
+//     profileBtn.classList.toggle(formConfig.inactiveButtonClass, !profileForm.checkValidity());
+//     profileBtn.disabled = !profileForm.checkValidity();
+// }
+
 
 
 enableValidation({
