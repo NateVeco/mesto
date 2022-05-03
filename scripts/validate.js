@@ -56,10 +56,13 @@ function hasInvalidInput(inputList) {
 function toggleButtonState(config, inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(config.inactiveButtonClass);
+        buttonElement.setAttribute('disabled', true);
     } else {
         buttonElement.classList.remove(config.inactiveButtonClass);
+        buttonElement.removeAttribute('disabled', true);
     }
 };
+
 
 enableValidation({
     formSelector: '.popup__container',
@@ -69,5 +72,3 @@ enableValidation({
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_active'
 });
-
-// заблочить кнопку сабмит после добавления карточки

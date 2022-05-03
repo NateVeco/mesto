@@ -18,6 +18,8 @@ const elementPopupImageOpened = document.querySelector('.popup_opened-image');
 const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
 const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
+const profileForm = document.querySelector('.popup__container');
+const profileBtn = Array.from(profileForm.querySelector('.popup__button-submit'));
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -79,8 +81,9 @@ function handleAddElementFormSubmit(evt) {
     elementsTable.prepend(addElement);
 
     closePopup(profilePopupAdd);
-
 };
+
+
 
 
 
