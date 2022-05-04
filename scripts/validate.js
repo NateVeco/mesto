@@ -42,15 +42,15 @@ function isValid(formConfig, formElement, inputElement) {
 
 function setEventListeners(formConfig, formElement) {
     const inputList = Array.from(formElement.querySelectorAll(formConfig.inputSelector));
-    const buttonElement = formElement.querySelector(formConfig.buttonSelector);
+    const profileBtn = formElement.querySelector(formConfig.buttonSelector);
 
-    toggleButtonState(inputList, formConfig.inactiveButtonClass, buttonElement);
+    toggleButtonState(inputList, formConfig.inactiveButtonClass, profileBtn);
 
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
             isValid(formConfig, formElement, inputElement);
 
-            toggleButtonState(inputList, formConfig.inactiveButtonClass, buttonElement);
+            toggleButtonState(inputList, formConfig.inactiveButtonClass, profileBtn);
         });
     });
 };
@@ -63,13 +63,13 @@ function hasInvalidInput(inputList) {
     });
 };
 
-function toggleButtonState(inputList, inactiveButtonClass, buttonElement) {
+function toggleButtonState(inputList, inactiveButtonClass, profileBtn) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(inactiveButtonClass);
-        buttonElement.setAttribute('disabled', true);
+        profileBtn.classList.add(inactiveButtonClass);
+        profileBtn.setAttribute('disabled', true);
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.removeAttribute('disabled', true);
+        profileBtn.classList.remove(inactiveButtonClass);
+        profileBtn.removeAttribute('disabled', true);
     }
 
 };

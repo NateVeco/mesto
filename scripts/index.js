@@ -113,11 +113,11 @@ profileEditBtn.addEventListener('click', () => {
     openPopup(profilePopupEdit);
 });
 profileAddBtn.addEventListener('click', () => {
-    const buttonElement = profileAddForm.querySelector(formConfig.buttonSelector);
+    const profileBtn = profileAddForm.querySelector(formConfig.buttonSelector);
     const inputList = Array.from(profileAddForm.querySelectorAll(formConfig.inputSelector));
 
     openPopup(profilePopupAdd);
-    toggleButtonState(inputList, formConfig.inactiveButtonClass, buttonElement);
+    toggleButtonState(inputList, formConfig.inactiveButtonClass, profileBtn);
 });
 
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
