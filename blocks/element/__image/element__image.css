@@ -2,8 +2,6 @@
   max-width: 282px;
   min-height: 282px;
   object-fit: cover;
+  cursor: pointer;
 }
 
-.element__image:hover {
-  opacity: 0.8;
-}

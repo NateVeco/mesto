@@ -1,7 +1,7 @@
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const profilePopupEdit = document.querySelector('.popup_edit-profile');
 const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
-const profileEditForm = profilePopupEdit.querySelector('.popup__container');
+const profileEditForm = profilePopupEdit.querySelector('.popup__form-edit');
 const nameProfileInput = profilePopupEdit.querySelector('.popup__input_name');
 const bioProfileInput = profilePopupEdit.querySelector('.popup__input_bio');
 const nameProfileChange = document.querySelector('.profile__name');
@@ -11,15 +11,14 @@ const profilePopupAdd = document.querySelector('.popup_add-image');
 const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
 const nameElementInput = profilePopupAdd.querySelector('.popup__input_name-element');
 const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-element');
-const profileAddForm = profilePopupAdd.querySelector('.popup__container');
+const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
 const elementsTable = document.querySelector('.elements__table');
 const template = document.querySelector('.template');
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
 const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
 const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
-const profileForm = document.querySelector('.popup__container');
-const profileBtn = Array.from(profileForm.querySelector('.popup__button-submit'));
+
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -77,14 +76,13 @@ function handleAddElementFormSubmit(evt) {
         name: nameElementInput.value,
         link: linkElementInput.value
     });
+
     profileAddForm.reset();
     elementsTable.prepend(addElement);
 
     closePopup(profilePopupAdd);
+
 };
-
-
-
 
 
 render();
@@ -114,7 +112,14 @@ profileEditBtn.addEventListener('click', () => {
     bioProfileInput.value = bioProfileChange.textContent;
     openPopup(profilePopupEdit);
 });
-profileAddBtn.addEventListener('click', () => openPopup(profilePopupAdd));
+profileAddBtn.addEventListener('click', () => {
+    const buttonElement = profileAddForm.querySelector(formConfig.buttonSelector);
+    const inputList = Array.from(profileAddForm.querySelectorAll(formConfig.inputSelector));
+
+    openPopup(profilePopupAdd);
+    toggleButtonState(inputList, formConfig.inactiveButtonClass, buttonElement);
+});
+
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
 profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
 profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
