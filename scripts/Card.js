@@ -29,34 +29,43 @@ export const initialImages = [{
 ];
 
 export class Card {
-    constructor(name, link, template) {
+    constructor(name, link, template, handleCardClick) {
         this._name = name;
         this._link = link;
         this._template = template;
+        this._handleCardClick = handleCardClick;
     }
 
     _handleRemoveElement() {
-        this._element.remove();
+        this._cardElement.remove();
     }
 
     _toggleLike() {
-        this._element.target.classList.toggle('element__like-button_active'); // не уверена, что так надо лайк делать
+        this._cardElement.querySelector('.element__like-button').classList.toggle('element__like-button_active');
+    }
+
+    _handleCardClick = () => {
+        openPopup(this._link, this._name);
+    };
+
+    _setEventListeners() {
+        this._cardElement.querySelector('.element__like-button').addEventListener('click', () => this._toggleLike());
+        this._cardElement.querySelector('.trash-button').addEventListener('click', () => this._handleRemoveElement());
+        this._cardElement.querySelector('.element__image').addEventListener("click", this._handleCardClick());
     }
 
     getElement() {
-        this._element = this._template.content.cloneNode(true).querySelector('.element');
-        this._element.querySelector('.element__image').src = this._link;
-        this._element.querySelector('.element__title').textContent = this._name;
-        this._element.querySelector('.element__title').alt = this._name;
-        this._element.querySelector('.trash-button').addEventListener('click', () => {
-            this._handleRemoveElement();
-        });
-        this._element.querySelector('.element__like-button').addEventListener('click', () => {
-            this._toggleLike();
-        });
+        this._cardElement = this._template.content.cloneNode(true).querySelector('.element');
+        this._cardElement.querySelector('.element__image').src = this._link;
+        this._cardElement.querySelector('.element__title').textContent = this._name;
+        this._cardElement.querySelector('.element__image').alt = this._name;
 
-        return this._element;
+        return this._cardElement;
     }
 }
 
-// const card = new Card('', '');
+
+
+// Осталось сделать: для каждой карточки создайте экземпляр класса Card
+// видимо надо как-то организовать связь класса с модулем index
+// данный класс только показывает карточки на сайте из массива. НЕ создает новую.Это в index должно быть
