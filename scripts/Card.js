@@ -29,43 +29,50 @@ export const initialImages = [{
 ];
 
 export class Card {
-    constructor(name, link, template, handleCardClick) {
+    constructor(name, link, template, handleOpenCardImage) {
         this._name = name;
         this._link = link;
         this._template = template;
-        this._handleCardClick = handleCardClick;
+        this._handleOpenCardImage = handleOpenCardImage;
+    };
+
+
+    _getCardsList() {
+        const cardElement = document.querySelector(this._template).content.querySelector('.element').cloneNode(true);
+        return cardElement;
     }
 
     _handleRemoveElement() {
-        this._cardElement.remove();
-    }
-
-    _toggleLike() {
-        this._cardElement.querySelector('.element__like-button').classList.toggle('element__like-button_active');
-    }
-
-    _handleCardClick = () => {
-        openPopup(this._link, this._name);
+        this._element.remove();
     };
 
-    _setEventListeners() {
-        this._cardElement.querySelector('.element__like-button').addEventListener('click', () => this._toggleLike());
-        this._cardElement.querySelector('.trash-button').addEventListener('click', () => this._handleRemoveElement());
-        this._cardElement.querySelector('.element__image').addEventListener("click", this._handleCardClick());
+    _toggleLike() {
+        this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
+    };
+
+    __handleCardClick = () => {
+        this._handleOpenCardImage({
+            link: this._link,
+            name: this._name
+        });
     }
 
-    getElement() {
-        this._cardElement = this._template.content.cloneNode(true).querySelector('.element');
-        this._cardElement.querySelector('.element__image').src = this._link;
-        this._cardElement.querySelector('.element__title').textContent = this._name;
-        this._cardElement.querySelector('.element__image').alt = this._name;
+    _setEventListeners() {
+        this._element.querySelector('.element__like-button').addEventListener('click', () => this._toggleLike());
+        this._element.querySelector('.trash-button').addEventListener('click', () => this._handleRemoveElement());
+        this._element.querySelector('.element__image').addEventListener("click", this._handleCardClick());
+    }
 
-        return this._cardElement;
+    getCardElement() {
+        this._element = this._getCardsList();
+        this._setEventListeners();
+        this._element.querySelector('.element__image').src = this._link;
+        this._element.querySelector('.element__title').textContent = this._name;
+        this._element.querySelector('.element__image').alt = this._name;
+
+        return this._element;
     }
 }
 
 
-
-// Осталось сделать: для каждой карточки создайте экземпляр класса Card
-// видимо надо как-то организовать связь класса с модулем index
 // данный класс только показывает карточки на сайте из массива. НЕ создает новую.Это в index должно быть
