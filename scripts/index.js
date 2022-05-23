@@ -72,8 +72,8 @@ function handleProfileEditFormSubmit() {
 // 
 
 
-function handleGetCardList(data) {
-    const card = new Card(data, '.template', openImagePopup);
+function createCard(item) {
+    const card = new Card(item, '.template', openImagePopup);
     const templateElement = card.getCardElement();
     return templateElement;
 };
@@ -82,7 +82,7 @@ function render({
     name,
     link
 }) {
-    cardsList.prepend(handleGetCardList({
+    cardsList.prepend(createCard({
         name,
         link
     }))
@@ -96,10 +96,10 @@ function handleInitialImages() {
 handleInitialImages();
 
 
-function openImagePopup(data) {
-    elementImage.src = data.link;
-    elementImage.alt = data.name;
-    elementTitleImage.textContent = data.name;
+function openImagePopup(item) {
+    elementImage.src = item.link;
+    elementImage.alt = item.name;
+    elementTitleImage.textContent = item.name;
     openPopup(elementPopupImageOpened);
 };
 
@@ -139,6 +139,7 @@ function closeOnOverlay(evt) {
 
 };
 
+
 profileEditBtn.addEventListener('click', () => {
     nameProfileInput.value = nameProfileChange.textContent;
     bioProfileInput.value = bioProfileChange.textContent;
@@ -151,6 +152,7 @@ profileAddBtn.addEventListener('click', () => {
     openPopup(profilePopupAdd);
     toggleButtonState(inputList, formConfig.inactiveButtonClass, profileBtn);
 });
+
 
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
 profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
