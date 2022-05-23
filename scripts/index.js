@@ -28,7 +28,7 @@ const elementsTable = document.querySelector('.elements__table');
 const cardsList = document.querySelector('.elements__table');
 
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
-const elementImage = elementPopupImageOpened.querySelector('.element__image');
+const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
 const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
 
@@ -96,10 +96,10 @@ function handleInitialImages() {
 handleInitialImages();
 
 
-function openImagePopup(item) {
-    elementImage.src = item.link;
-    elementImage.alt = item.name;
-    elementTitleImage.textContent = item.name;
+function openImagePopup(data) {
+    elementImage.src = data.link;
+    elementImage.alt = data.name;
+    elementTitleImage.textContent = data.name;
     openPopup(elementPopupImageOpened);
 };
 
