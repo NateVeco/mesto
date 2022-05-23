@@ -72,8 +72,8 @@ function handleProfileEditFormSubmit() {
 // 
 
 
-function handleGetCardList(item) {
-    const card = new Card(item, '.template', openImagePopup);
+function handleGetCardList(data) {
+    const card = new Card(data, '.template', openImagePopup);
     const templateElement = card.getCardElement();
     return templateElement;
 };
