@@ -29,18 +29,13 @@ export const initialImages = [{
 ];
 
 export class Card {
-    constructor(name, link, template, handleOpenCardImage) {
-        this._name = name;
-        this._link = link;
+    constructor(data, template, handleOpenCardImage) {
+        this._name = data.name;
+        this._link = data.link;
         this._template = template;
-        this._handleOpenCardImage = handleOpenCardImage;
+        this.handleOpenCardImage = handleOpenCardImage;
     };
 
-
-    _getCardsList() {
-        const cardElement = document.querySelector(this._template).content.querySelector('.element').cloneNode(true);
-        return cardElement;
-    }
 
     _handleRemoveElement() {
         this._element.remove();
@@ -50,29 +45,38 @@ export class Card {
         this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
     };
 
-    __handleCardClick = () => {
-        this._handleOpenCardImage({
-            link: this._link,
-            name: this._name
+
+    _getCardsList() {
+        const cardElement = document
+            .querySelector(this._template)
+            .content
+            .querySelector('.element')
+            .cloneNode(true);
+
+        return cardElement;
+    };
+
+    _handleCardClick = () => {
+        this.handleOpenCardImage({
+            name: this._name,
+            link: this._link
         });
-    }
+    };
 
     _setEventListeners() {
         this._element.querySelector('.element__like-button').addEventListener('click', () => this._toggleLike());
         this._element.querySelector('.trash-button').addEventListener('click', () => this._handleRemoveElement());
         this._element.querySelector('.element__image').addEventListener("click", this._handleCardClick());
-    }
+    };
 
     getCardElement() {
         this._element = this._getCardsList();
         this._setEventListeners();
-        this._element.querySelector('.element__image').src = this._link;
         this._element.querySelector('.element__title').textContent = this._name;
         this._element.querySelector('.element__image').alt = this._name;
+        this._element.querySelector('.element__image').src = this._link;
 
         return this._element;
     }
+
 }
-
-
-// данный класс только показывает карточки на сайте из массива. НЕ создает новую.Это в index должно быть

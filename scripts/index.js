@@ -25,7 +25,7 @@ const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-eleme
 const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
 const elementsTable = document.querySelector('.elements__table');
 
-const cardsList = document.querySelector('.element');
+const cardsList = document.querySelector('.elements__table');
 
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
 const elementImage = elementPopupImageOpened.querySelector('.element__image');
@@ -69,15 +69,23 @@ function handleProfileEditFormSubmit() {
 //     return newImage;
 // }
 
+// 
 
-function handleGetCardList(name, link, template) {
-    const card = new Card(name, link, template);
+
+function handleGetCardList(item) {
+    const card = new Card(item, '.template', openImagePopup);
     const templateElement = card.getCardElement();
     return templateElement;
 };
 
-function render(name, link) {
-    cardsList.append(handleGetCardList(name, link))
+function render({
+    name,
+    link
+}) {
+    cardsList.prepend(handleGetCardList({
+        name,
+        link
+    }))
 };
 
 function handleInitialImages() {
