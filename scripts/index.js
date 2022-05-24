@@ -3,9 +3,10 @@ import {
     Card
 } from './Card.js';
 
-// import {
-//     formConfig
-// } from './FormValidator.js';
+import {
+    formConfig,
+    FormValidator
+} from './FormValidator.js';
 
 
 
@@ -24,9 +25,7 @@ const nameElementInput = profilePopupAdd.querySelector('.popup__input_name-eleme
 const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-element');
 const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
 const elementsTable = document.querySelector('.elements__table');
-
 const cardsList = document.querySelector('.elements__table');
-
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
 const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
@@ -44,32 +43,6 @@ function handleProfileEditFormSubmit() {
     bioProfileChange.textContent = bioProfileInput.value;
     closePopup(profilePopupEdit);
 }
-
-
-// function getElement(item) {
-//     const newImage = template.content.cloneNode(true);
-//     const nameElement = newImage.querySelector('.element__title');
-//     const imageElement = newImage.querySelector('.element__image');
-//     const removeButton = newImage.querySelector('.trash-button');
-//     const likeButton = newImage.querySelector('.element__like-button');
-
-//     nameElement.textContent = item.name;
-//     imageElement.src = item.link;
-//     imageElement.alt = item.name;
-
-//     removeButton.addEventListener('click', handleRemoveElement);
-//     likeButton.addEventListener('click', toggleLike);
-//     imageElement.addEventListener('click', () => {
-//         elementTitleImage.textContent = item.name;
-//         elementImage.src = item.link;
-//         elementImage.alt = item.name;
-//         openPopup(elementPopupImageOpened);
-//     });
-
-//     return newImage;
-// }
-
-// 
 
 
 function createCard(item) {
@@ -106,7 +79,7 @@ function openImagePopup(item) {
 
 function handleAddElementFormSubmit(evt) {
     evt.preventDefault();
-    const addElement = getElement({
+    const addElement = createCard({
         name: nameElementInput.value,
         link: linkElementInput.value
     });
@@ -145,12 +118,12 @@ profileEditBtn.addEventListener('click', () => {
     bioProfileInput.value = bioProfileChange.textContent;
     openPopup(profilePopupEdit);
 });
+
 profileAddBtn.addEventListener('click', () => {
-    const profileBtn = profileAddForm.querySelector(formConfig.buttonSelector);
-    const inputList = Array.from(profileAddForm.querySelectorAll(formConfig.inputSelector));
+    const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
 
     openPopup(profilePopupAdd);
-    toggleButtonState(inputList, formConfig.inactiveButtonClass, profileBtn);
+    profileCardAddForm.toggleButtonState();
 });
 
 
