@@ -31,6 +31,12 @@ const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
 const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
 
+const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
+const profileEditInfoForm = new FormValidator(formConfig, profileEditForm);
+
+profileCardAddForm.enableValidation();
+profileEditInfoForm.enableValidation();
+
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -120,8 +126,6 @@ profileEditBtn.addEventListener('click', () => {
 });
 
 profileAddBtn.addEventListener('click', () => {
-    const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
-
     openPopup(profilePopupAdd);
     profileCardAddForm.toggleButtonState();
 });
