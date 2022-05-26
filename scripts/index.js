@@ -101,7 +101,7 @@ function handleAddElementFormSubmit(evt) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    popup.removeEventListener('keydown', closePopupEsc);
+    document.removeEventListener('keydown', closePopupEsc);
     popup.removeEventListener('click', closeOnOverlay);
 };
 
