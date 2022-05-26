@@ -1,12 +1,3 @@
-export const formConfig = {
-    formSelector: '.popup__container',
-    inputSelector: '.popup__input',
-    buttonSelector: '.popup__button-submit',
-    inactiveButtonClass: 'popup__button-submit_type_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_active'
-};
-
 export class FormValidator {
     constructor(formConfig, formElement) {
         this._formElement = formElement;
@@ -55,6 +46,13 @@ export class FormValidator {
             this._profileBtn.removeAttribute('disabled', true);
         }
 
+    };
+
+    resetValidation() {
+
+        this._inputList.forEach((inputElement) => {
+            this._hideInputError(inputElement)
+        })
     };
 
 

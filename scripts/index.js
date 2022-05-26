@@ -1,12 +1,15 @@
 import {
-    initialImages,
     Card
 } from './Card.js';
 
 import {
-    formConfig,
     FormValidator
 } from './FormValidator.js';
+
+import {
+    formConfig,
+    initialImages
+} from '../utils/constants.js';
 
 
 
@@ -127,6 +130,7 @@ profileEditBtn.addEventListener('click', () => {
 
 profileAddBtn.addEventListener('click', () => {
     openPopup(profilePopupAdd);
+    profileCardAddForm.resetValidation();
     profileCardAddForm.toggleButtonState();
 });
 
