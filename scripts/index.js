@@ -15,7 +15,6 @@ import {
 
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const profilePopupEdit = document.querySelector('.popup_edit-profile');
-const profileCloseBtn = profilePopupEdit.querySelector('.popup__button-close');
 const profileEditForm = profilePopupEdit.querySelector('.popup__form-edit');
 const nameProfileInput = profilePopupEdit.querySelector('.popup__input_name');
 const bioProfileInput = profilePopupEdit.querySelector('.popup__input_bio');
@@ -23,7 +22,6 @@ const nameProfileChange = document.querySelector('.profile__name');
 const bioProfileChange = document.querySelector('.profile__bio');
 const profileAddBtn = document.querySelector('.profile__add-button');
 const profilePopupAdd = document.querySelector('.popup_add-image');
-const profileAddCloseBtn = profilePopupAdd.querySelector('.popup__button-close');
 const nameElementInput = profilePopupAdd.querySelector('.popup__input_name-element');
 const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-element');
 const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
@@ -32,7 +30,7 @@ const cardsList = document.querySelector('.elements__table');
 const elementPopupImageOpened = document.querySelector('.popup_opened-image');
 const elementImage = elementPopupImageOpened.querySelector('.popup__image');
 const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
-const elementImageCloseBtn = elementPopupImageOpened.querySelector('.popup__button-close');
+const popups = document.querySelectorAll('.popup');
 
 const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
 const profileEditInfoForm = new FormValidator(formConfig, profileEditForm);
@@ -103,9 +101,17 @@ function handleAddElementFormSubmit(evt) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupEsc);
-    document.removeEventListener('click', closeOnOverlay);
+    popup.removeEventListener('keydown', closePopupEsc);
+    popup.removeEventListener('click', closeOnOverlay);
 };
+
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup__button-close')) {
+            closePopup(popup)
+        }
+    })
+});
 
 function closePopupEsc(evt) {
     if (evt.key === 'Escape') {
@@ -137,6 +143,3 @@ profileAddBtn.addEventListener('click', () => {
 
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
 profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
-profileCloseBtn.addEventListener('click', () => closePopup(profilePopupEdit));
-profileAddCloseBtn.addEventListener('click', () => closePopup(profilePopupAdd));
-elementImageCloseBtn.addEventListener('click', () => closePopup(elementPopupImageOpened));
