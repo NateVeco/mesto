@@ -36,3 +36,22 @@ export const formConfig = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_active'
 };
+
+export const profileEditBtn = document.querySelector('.profile__edit-button');
+export const profilePopupEdit = document.querySelector('.popup_edit-profile');
+export const profileEditForm = profilePopupEdit.querySelector('.popup__form-edit');
+export const nameProfileInput = profilePopupEdit.querySelector('.popup__input_name');
+export const bioProfileInput = profilePopupEdit.querySelector('.popup__input_bio');
+export const nameProfileChange = document.querySelector('.profile__name');
+export const bioProfileChange = document.querySelector('.profile__bio');
+export const profileAddBtn = document.querySelector('.profile__add-button');
+export const profilePopupAdd = document.querySelector('.popup_add-image');
+export const nameElementInput = profilePopupAdd.querySelector('.popup__input_name-element');
+export const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-element');
+export const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
+export const elementsTable = document.querySelector('.elements__table');
+export const cardsList = document.querySelector('.elements__table');
+export const elementPopupImageOpened = document.querySelector('.popup_opened-image');
+export const elementImage = elementPopupImageOpened.querySelector('.popup__image');
+export const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
+export const popups = document.querySelectorAll('.popup');

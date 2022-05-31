@@ -1,10 +1,31 @@
 import {
+    profileEditBtn,
+    profilePopupEdit,
+    profileEditForm,
+    nameProfileInput,
+    bioProfileInput,
+    nameProfileChange,
+    bioProfileChange,
+    profileAddBtn,
+    profilePopupAdd,
+    nameElementInput,
+    linkElementInput,
+    profileAddForm,
+    elementsTable,
+    cardsList,
+    elementPopupImageOpened,
+    elementImage,
+    elementTitleImage,
+    popups
+} from '../utils/constants.js';
+
+import {
     Card
-} from './Card.js';
+} from '../components/Card.js';
 
 import {
     FormValidator
-} from './FormValidator.js';
+} from '../components/FormValidator.js';
 
 import {
     formConfig,
@@ -13,27 +34,8 @@ import {
 
 
 
-const profileEditBtn = document.querySelector('.profile__edit-button');
-const profilePopupEdit = document.querySelector('.popup_edit-profile');
-const profileEditForm = profilePopupEdit.querySelector('.popup__form-edit');
-const nameProfileInput = profilePopupEdit.querySelector('.popup__input_name');
-const bioProfileInput = profilePopupEdit.querySelector('.popup__input_bio');
-const nameProfileChange = document.querySelector('.profile__name');
-const bioProfileChange = document.querySelector('.profile__bio');
-const profileAddBtn = document.querySelector('.profile__add-button');
-const profilePopupAdd = document.querySelector('.popup_add-image');
-const nameElementInput = profilePopupAdd.querySelector('.popup__input_name-element');
-const linkElementInput = profilePopupAdd.querySelector('.popup__input_link-element');
-const profileAddForm = profilePopupAdd.querySelector('.popup__form-add');
-const elementsTable = document.querySelector('.elements__table');
-const cardsList = document.querySelector('.elements__table');
-const elementPopupImageOpened = document.querySelector('.popup_opened-image');
-const elementImage = elementPopupImageOpened.querySelector('.popup__image');
-const elementTitleImage = elementPopupImageOpened.querySelector('.popup__title-image');
-const popups = document.querySelectorAll('.popup');
-
-const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
-const profileEditInfoForm = new FormValidator(formConfig, profileEditForm);
+export const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
+export const profileEditInfoForm = new FormValidator(formConfig, profileEditForm);
 
 profileCardAddForm.enableValidation();
 profileEditInfoForm.enableValidation();
