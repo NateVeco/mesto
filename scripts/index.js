@@ -37,6 +37,23 @@ import {
 export const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
 export const profileEditInfoForm = new FormValidator(formConfig, profileEditForm);
 
+// const cardsList = new Section({
+//         data: messageList,
+//         renderer: (cardItem) => {
+//             const card = cardItem.isOwner ?
+//                 new UserCard(cardItem, '.card-template_type_user') :
+//                 new DefaultCard(cardItem, '.card-template_type_default');
+
+//             const cardElement = card.generateCard();
+
+//             cardsList.setItem(cardElement);
+//         },
+//     },
+//     cardListSection
+// );
+
+// cardsList.renderItems();
+
 profileCardAddForm.enableValidation();
 profileEditInfoForm.enableValidation();
 
