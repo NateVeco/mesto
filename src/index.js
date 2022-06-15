@@ -1,3 +1,5 @@
+import './pages/index.css';
+
 import {
     profileEditBtn,
     profilePopupEdit,
@@ -17,20 +19,20 @@ import {
     elementImage,
     elementTitleImage,
     popups
-} from '../utils/constants.js';
+} from './utils/constants.js';
 
 import {
     Card
-} from '../components/Card.js';
+} from './components/Card.js';
 
 import {
     FormValidator
-} from '../components/FormValidator.js';
+} from './components/FormValidator.js';
 
 import {
     formConfig,
     initialImages
-} from '../utils/constants.js';
+} from './utils/constants.js';
 
 
 
