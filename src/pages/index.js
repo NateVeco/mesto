@@ -1,4 +1,4 @@
-import './pages/index.css';
+import './index.css';
 
 import {
     profileEditBtn,
@@ -60,12 +60,6 @@ profileCardAddForm.enableValidation();
 profileEditInfoForm.enableValidation();
 
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupEsc);
-    popup.addEventListener('click', closeOnOverlay);
-};
-
 function handleProfileEditFormSubmit() {
     nameProfileChange.textContent = nameProfileInput.value;
     bioProfileChange.textContent = bioProfileInput.value;
@@ -120,33 +114,33 @@ function handleAddElementFormSubmit(evt) {
 };
 
 
-function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupEsc);
-    popup.removeEventListener('click', closeOnOverlay);
-};
+// function closePopup(popup) {
+//     popup.classList.remove('popup_opened');
+//     document.removeEventListener('keydown', closePopupEsc);
+//     popup.removeEventListener('click', closeOnOverlay);
+// };
 
-popups.forEach((popup) => {
-    popup.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup__button-close')) {
-            closePopup(popup)
-        }
-    })
-});
+// popups.forEach((popup) => {
+//     popup.addEventListener('click', (evt) => {
+//         if (evt.target.classList.contains('popup__button-close')) {
+//             closePopup(popup)
+//         }
+//     })
+// });
 
-function closePopupEsc(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
-    }
-};
+// function closePopupEsc(evt) {
+//     if (evt.key === 'Escape') {
+//         const openedPopup = document.querySelector('.popup_opened');
+//         closePopup(openedPopup);
+//     }
+// };
 
-function closeOnOverlay(evt) {
-    if (evt.target === evt.currentTarget) {
-        closePopup(evt.target);
-    }
+// function closeOnOverlay(evt) {
+//     if (evt.target === evt.currentTarget) {
+//         closePopup(evt.target);
+//     }
 
-};
+// };
 
 
 profileEditBtn.addEventListener('click', () => {
