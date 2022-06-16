@@ -10,13 +10,11 @@ export class Section {
 
     renderItems() {
         this._initialArray.forEach(item => {
-            this._renderer(item); // вызываем renderer, передав item
+            this._renderer(item);
         });
     }
 
-    //     setItem(element) {
-    //         this._container.append(element);
-    //     }
-
-    //     addItem() {}
-}
+    setItem(item) {
+        this._container.append(item);
+    }
+};
