@@ -27,5 +27,3 @@ export class Popup {
         this._popupSelector.addEventListener('click', this._handleEscClose);
     }
 }
-
-// нужно ли добавлять метод для закрытия по оверлей?
