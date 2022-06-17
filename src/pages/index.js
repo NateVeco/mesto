@@ -60,11 +60,11 @@ profileCardAddForm.enableValidation();
 profileEditInfoForm.enableValidation();
 
 
-function handleProfileEditFormSubmit() {
-    nameProfileChange.textContent = nameProfileInput.value;
-    bioProfileChange.textContent = bioProfileInput.value;
-    closePopup(profilePopupEdit);
-}
+// function handleProfileEditFormSubmit() {
+//     nameProfileChange.textContent = nameProfileInput.value;
+//     bioProfileChange.textContent = bioProfileInput.value;
+//     closePopup(profilePopupEdit);
+// }
 
 
 function createCard(item) {
@@ -91,27 +91,27 @@ function handleInitialImages() {
 handleInitialImages();
 
 
-function openImagePopup(item) {
-    elementImage.src = item.link;
-    elementImage.alt = item.name;
-    elementTitleImage.textContent = item.name;
-    openPopup(elementPopupImageOpened);
-};
+// function openImagePopup(item) {
+//     elementImage.src = item.link;
+//     elementImage.alt = item.name;
+//     elementTitleImage.textContent = item.name;
+//     openPopup(elementPopupImageOpened);
+// };
 
 
-function handleAddElementFormSubmit(evt) {
-    evt.preventDefault();
-    const addElement = createCard({
-        name: nameElementInput.value,
-        link: linkElementInput.value
-    });
+// function handleAddElementFormSubmit(evt) {
+//     evt.preventDefault();
+//     const addElement = createCard({
+//         name: nameElementInput.value,
+//         link: linkElementInput.value
+//     });
 
-    profileAddForm.reset();
-    elementsTable.prepend(addElement);
+//     profileAddForm.reset();
+//     elementsTable.prepend(addElement);
 
-    closePopup(profilePopupAdd);
+//     closePopup(profilePopupAdd);
 
-};
+// };
 
 
 // function closePopup(popup) {
@@ -143,18 +143,18 @@ function handleAddElementFormSubmit(evt) {
 // };
 
 
-profileEditBtn.addEventListener('click', () => {
-    nameProfileInput.value = nameProfileChange.textContent;
-    bioProfileInput.value = bioProfileChange.textContent;
-    openPopup(profilePopupEdit);
-});
+// profileEditBtn.addEventListener('click', () => {
+//     nameProfileInput.value = nameProfileChange.textContent;
+//     bioProfileInput.value = bioProfileChange.textContent;
+//     openPopup(profilePopupEdit);
+// });
 
-profileAddBtn.addEventListener('click', () => {
-    openPopup(profilePopupAdd);
-    profileCardAddForm.resetValidation();
-    profileCardAddForm.toggleButtonState();
-});
+// profileAddBtn.addEventListener('click', () => {
+//     openPopup(profilePopupAdd);
+//     profileCardAddForm.resetValidation();
+//     profileCardAddForm.toggleButtonState();
+// });
 
 
-profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
-profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
+// profileEditForm.addEventListener('submit', handleProfileEditFormSubmit);
+// profileAddForm.addEventListener('submit', handleAddElementFormSubmit);
