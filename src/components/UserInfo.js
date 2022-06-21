@@ -13,7 +13,7 @@ export class UserInfo {
             bio: this._profileBio.textContent
         }
 
-        return this._profileInfo
+        return this._profileInfo;
     };
 
     setUserInfo(item) {
