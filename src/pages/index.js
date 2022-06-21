@@ -56,20 +56,20 @@ function createCard(item) {
     return templateElement;
 };
 
-function render({
-    name,
-    link
-}) {
-    cardsList.prepend(createCard({
-        name,
-        link
-    }))
-};
+// function render({
+//     name,
+//     link
+// }) {
+//     cardsList.prepend(createCard({
+//         name,
+//         link
+//     }))
+// };
 
-function handleInitialImages() {
-    initialImages.forEach(render);
-};
-handleInitialImages();
+// function handleInitialImages() {
+//     initialImages.forEach(render);
+// };
+// handleInitialImages();
 
 const cards = new Section((item) => {
     const card = createCard(item);
