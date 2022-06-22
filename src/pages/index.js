@@ -34,11 +34,10 @@ import {
 from '../components/UserInfo.js';
 
 import {
-    profileEditBtn,
-    profileAddBtn,
+    profileEditButton,
+    profileAddButton,
     profileEditForm,
     profileAddForm,
-    cardsList,
     bioProfileChange,
     nameProfileChange
 } from "../utils/constants.js";
@@ -50,32 +49,19 @@ export const profileEditInfoForm = new FormValidator(formConfig, profileEditForm
 profileCardAddForm.enableValidation();
 profileEditInfoForm.enableValidation();
 
+
 function createCard(item) {
     const card = new Card(item, '.template', openImagePopup);
     const templateElement = card.getCardElement();
     return templateElement;
 };
 
-// function render({
-//     name,
-//     link
-// }) {
-//     cardsList.prepend(createCard({
-//         name,
-//         link
-//     }))
-// };
 
-// function handleInitialImages() {
-//     initialImages.forEach(render);
-// };
-// handleInitialImages();
-
-const cards = new Section((item) => {
+const cardList = new Section((item) => {
     const card = createCard(item);
-    cards.setItem(card);
+    cardList.setItem(card);
 }, '.elements__table');
-cards.renderItems(initialImages);
+cardList.renderItems(initialImages);
 
 const addImagePopup = new PopupWithForm('.popup_add-image', {
     handleFormSubmit: (data) => {
@@ -83,17 +69,19 @@ const addImagePopup = new PopupWithForm('.popup_add-image', {
             name: data.name,
             link: data.link
         });
-        cards.setItem(elementInput);
+        cardList.setItem(elementInput);
         addImagePopup.close();
     }
 });
 
 addImagePopup.setEventListeners();
 
-profileAddBtn.addEventListener('click', () => {
+profileAddButton.addEventListener('click', () => {
     addImagePopup.open();
     profileCardAddForm.resetValidation();
-    profileCardAddForm.toggleButtonState()
+    profileCardAddForm.toggleButtonState();
+    profileCardAddForm.disableSubmitButton();
+
 });
 
 
@@ -130,9 +118,10 @@ const openedEditPopup = () => {
     bioProfileChange.value = item.bio;
 };
 
-profileEditBtn.addEventListener('click', () => {
+profileEditButton.addEventListener('click', () => {
     profileEditPopup.open();
     openedEditPopup();
     profileEditInfoForm.resetValidation();
-    profileEditInfoForm.toggleButtonState()
+    profileEditInfoForm.toggleButtonState();
+    profileEditInfoForm.disableSubmitButton();
 });

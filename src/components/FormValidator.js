@@ -3,8 +3,8 @@ export class FormValidator {
         this._formElement = formElement;
         this._formConfig = formConfig;
         this._inputList = Array.from(this._formElement.querySelectorAll(this._formConfig.inputSelector));
-        this._profileBtn = this._formElement.querySelector(this._formConfig.buttonSelector);
-    }
+        this._profileButton = this._formElement.querySelector(this._formConfig.buttonSelector);
+    };
 
 
     _showInputError(inputElement) {
@@ -39,14 +39,21 @@ export class FormValidator {
 
     toggleButtonState() {
         if (this._hasInvalidInput()) {
-            this._profileBtn.classList.add(this._formConfig.inactiveButtonClass);
-            this._profileBtn.setAttribute('disabled', true);
+            this._profileButton.classList.add(this._formConfig.inactiveButtonClass);
+            this.disableSubmitButton();
         } else {
-            this._profileBtn.classList.remove(this._formConfig.inactiveButtonClass);
-            this._profileBtn.removeAttribute('disabled', true);
+            this._profileButton.classList.remove(this._formConfig.inactiveButtonClass);
+            this.showSubmitButton();
         }
-
     };
+
+    disableSubmitButton() {
+        this._profileButton.setAttribute('disabled', true);
+    };
+
+    showSubmitButton() {
+        this._profileButton.removeAttribute('disabled', true);
+    }
 
     resetValidation() {
 
@@ -66,6 +73,8 @@ export class FormValidator {
                 this._isValid(inputElement);
 
                 this.toggleButtonState();
+                this.disableSubmitButton();
+                this.showSubmitButton();
             });
         });
     };

@@ -9,6 +9,7 @@ export class Card {
 
     _handleRemoveElement() {
         this._element.remove();
+        this._element = null;
     };
 
     _toggleLike() {
