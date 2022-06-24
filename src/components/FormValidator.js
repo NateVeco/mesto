@@ -40,10 +40,8 @@ export class FormValidator {
     toggleButtonState() {
         if (this._hasInvalidInput()) {
             this._profileButton.classList.add(this._formConfig.inactiveButtonClass);
-            this.disableSubmitButton();
         } else {
             this._profileButton.classList.remove(this._formConfig.inactiveButtonClass);
-            this.showSubmitButton();
         }
     };
 
