@@ -79,9 +79,7 @@ addImagePopup.setEventListeners();
 profileAddButton.addEventListener('click', () => {
     addImagePopup.open();
     profileCardAddForm.resetValidation();
-    profileCardAddForm.toggleButtonState();
     profileCardAddForm.disableSubmitButton();
-
 });
 
 
@@ -122,6 +120,5 @@ profileEditButton.addEventListener('click', () => {
     profileEditPopup.open();
     openedEditPopup();
     profileEditInfoForm.resetValidation();
-    profileEditInfoForm.toggleButtonState();
     profileEditInfoForm.disableSubmitButton();
 });
