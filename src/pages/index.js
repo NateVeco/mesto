@@ -42,6 +42,12 @@ import {
     nameProfileChange
 } from "../utils/constants.js";
 
+import {
+    PopupWithConfirmation
+} from '../components/PopupWithConfirmation.js';
+
+// const api = new Api('адрес', 'код');
+
 
 export const profileCardAddForm = new FormValidator(formConfig, profileAddForm);
 export const profileEditInfoForm = new FormValidator(formConfig, profileEditForm);
@@ -81,6 +87,9 @@ profileAddButton.addEventListener('click', () => {
     profileCardAddForm.resetValidation();
     profileCardAddForm.disableSubmitButton();
 });
+
+const deleteImagePopup = new PopupWithConfirmation('.popup_delete-image');
+deleteImagePopup.setEventListeners();
 
 
 const openedImagePopup = new PopupWithImage('.popup_opened-image');
