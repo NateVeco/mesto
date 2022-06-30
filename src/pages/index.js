@@ -46,7 +46,11 @@ import {
     PopupWithConfirmation
 } from '../components/PopupWithConfirmation.js';
 
-// const api = new Api('адрес', 'код');
+import {
+    Api
+} from '../components/Api.js';
+
+const api = new Api('https://mesto.nomoreparties.co/v1/cohort-44/cards');
 
 
 export const profileCardAddForm = new FormValidator(formConfig, profileAddForm);

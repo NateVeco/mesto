@@ -2,6 +2,10 @@ export class Card {
     constructor(data, template, handleOpenCardImage) {
         this._name = data.name;
         this._link = data.link;
+        this._userId = userId;
+        this._ownerId = data.owner._id;
+        this._cardElement = data.cardElement;
+        this._likes = data.likes;
         this._template = template;
         this.handleOpenCardImage = handleOpenCardImage;
     };
