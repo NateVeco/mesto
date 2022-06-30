@@ -17,11 +17,8 @@
     <main class="content">
       <section class="profile">
         <div class="profile__info">
-          <img
-            src="<%=require('./images/Avatar.jpg')%>"
-            alt="Аватар"
-            class="profile__avatar"
-          />
+          <img src="#" alt="Аватар" class="profile__avatar" />
+          <div class="profile__avatar-overlay"></div>
           <div class="profile__text">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button
@@ -125,6 +122,7 @@
         <div class="element__info">
           <h2 class="element__title"></h2>
           <button type="button" class="element__like-button"></button>
+          <p class="element__like-number"></p>
         </div>
         <button type="button" class="trash-button button"></button>
       </li>
