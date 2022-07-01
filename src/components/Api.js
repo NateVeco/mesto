@@ -32,7 +32,7 @@ export class Api {
             .then(this._getResponse);
     };
 
-    _validProfileInfo(item) {
+    validProfileInfo(item) {
         return fetch(`${this._url}/users/me`, {
                 method: 'PATCH',
                 headers: this._headers,

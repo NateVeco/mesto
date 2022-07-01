@@ -25,11 +25,11 @@ export class PopupWithForm extends Popup {
         this._formElement.reset();
     };
 
-    isLoading(state, loadedText, loadingText) {
-        if (state) {
-            this._submitButton.textContent = loadingText;
+    isLoading(loading, loadedButton, loadingButton) {
+        if (loading) {
+            this._submitButton.textContent = loadingButton;
         } else {
-            this._submitButton.textContent = loadedText;
+            this._submitButton.textContent = loadedButton;
         }
     };
 
