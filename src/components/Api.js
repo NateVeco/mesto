@@ -8,7 +8,7 @@ export class Api {
         }
     }
 
-    _getResponse(res) {
+    getResponse(res) {
         if (res.ok) {
             return res.json();
         } else {
@@ -16,7 +16,7 @@ export class Api {
         }
     };
 
-    _getProfileInfo() {
+    getProfileInfo() {
         return fetch(`${this._url}/users/me`, {
                 method: 'GET',
                 headers: this._headers
@@ -24,7 +24,7 @@ export class Api {
             .then(this._getResponse);
     };
 
-    _getCardList() {
+    getCardList() {
         return fetch(`${this._url}/cards`, {
                 method: 'GET',
                 headers: this._headers

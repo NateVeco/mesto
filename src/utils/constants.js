@@ -56,7 +56,5 @@ export const popups = document.querySelectorAll('.popup');
 export const profileChangeAvatarForm = document.querySelector('.popup__form-change-avatar');
 export const profileChangeAvatarButton = document.querySelector('.profile__avatar-overlay');
 
-// Сделать кнопку активной у аватара
-// настроить оверлей на аватаре
-// настроить стили классы для загружаемой неактивной кнопки
+// Сделать кнопку активной у аватара исправить контейнер
 // исправить косяки

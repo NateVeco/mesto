@@ -18,6 +18,12 @@ export class Card {
         this._element = null;
     };
 
+    _deleteOwnerCard() {
+        if (this._ownerId === this._userId) {
+            this._elementTrashButton.remove()
+        }
+    };
+
     _toggleLike(data) {
         this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
         this._likes = data.likes;
@@ -26,11 +32,9 @@ export class Card {
 
     _isLiked() {
         return this._likes.some((data) => {
-            return data._cardElement.includes(this._ownerId)
+            return data._cardElement.includes(this._userId)
         });
-
     };
-    //  _isLiked = () => this._likes.some((item) => item._id === this._userId);
 
     _getCardsList() {
         const cardElement = document
@@ -51,7 +55,7 @@ export class Card {
 
     _setEventListeners() {
         this._element.querySelector('.element__like-button').addEventListener('click', () => this._toggleLike(this));
-        this._element.querySelector('.trash-button').addEventListener('click', () => this._handleDeleteCard(this));
+        this._elementTrashButton.querySelector('.trash-button').addEventListener('click', () => this._handleDeleteCard(this));
         this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick());
     };
 
@@ -63,7 +67,7 @@ export class Card {
         this._element.querySelector('.element__image').src = this._link;
         this._element.querySelector('.element__like-number').textContent = this._likes.length;
 
-        // this._deleteOwnerCard();
+        this._deleteOwnerCard();
 
         return this._element;
     }
