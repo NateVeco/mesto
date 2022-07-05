@@ -1,14 +1,14 @@
 export class Api {
-    constructor(url, tokenCode) {
+    constructor(url, cardId) {
         this._url = url;
-        this._tokenCode = tokenCode;
+        this._cardId = cardId;
         this._headers = {
             'Content-type': 'application/json',
             'Authorization': 'd1a60a2e-b9fd-4b08-ae19-243adaf784bc'
         }
-    }
+    };
 
-    getResponse(res) {
+    _getResponse(res) {
         if (res.ok) {
             return res.json();
         } else {
@@ -38,7 +38,7 @@ export class Api {
                 headers: this._headers,
                 body: JSON.stringify({
                     name: item.name,
-                    bio: item.bio
+                    about: item.bio
                 })
             })
             .then(this._getResponse);
@@ -60,31 +60,31 @@ export class Api {
                 method: 'POST',
                 headers: this._headers,
                 body: JSON.stringify({
-                    name: item.title,
-                    link: item.link
+                    name: item.titleImage,
+                    link: item.imageLink
                 })
             })
             .then(this._getResponse);
     };
 
-    deleteCard(cardElement) {
-        return fetch(`${this._url}/cards/${cardElement}`, {
+    deleteCard(cardId) {
+        return fetch(`${this._url}/cards/${cardId}`, {
                 method: 'DELETE',
                 headers: this._headers
             })
             .then(this._getResponse);
     };
 
-    getLike(cardElement) {
-        return fetch(`${this._url}/cards/${cardElement}/likes`, {
+    getLike(cardId) {
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
                 method: 'PUT',
                 headers: this._headers
             })
             .then(this._getResponse);
     };
 
-    deleteLike(cardElement) {
-        return fetch(`${this._url}/cards/${cardElement}/likes`, {
+    deleteLike(cardId) {
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
                 method: 'DELETE',
                 headers: this._headers
             })

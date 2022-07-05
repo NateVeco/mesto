@@ -12,7 +12,7 @@ export class UserInfo {
     getUserInfo() {
         this._profileInfo = {
             name: this._profileName.textContent,
-            bio: this._profileBio.textContent,
+            about: this._profileBio.textContent,
             avatar: this._profileAvatar.src
         }
 
@@ -21,7 +21,7 @@ export class UserInfo {
 
     setUserInfo(item) {
         this._profileName.textContent = item.name;
-        this._profileBio.textContent = item.bio;
+        this._profileBio.textContent = item.about;
         this._profileAvatar.src = item.avatar;
     }
 }
