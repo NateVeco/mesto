@@ -18,7 +18,7 @@
       <section class="profile">
         <div class="profile__info">
           <div class="profile__avatar-container">
-            <img src="#" alt="Аватар" class="profile__avatar" />
+            <img class="profile__avatar" src="#" alt="Аватар" />
             <div class="profile__avatar-overlay"></div>
           </div>
           <div class="profile__text">
@@ -95,7 +95,7 @@
             type="text"
             value=""
             placeholder="Название"
-            name="name-element"
+            name="name"
             id="name-element"
             class="popup__input popup__input_name-element"
             minlength="2"
@@ -157,11 +157,11 @@
     <!-- конец попапа -->
     <!-- попап изменения аватара -->
     <div class="popup popup_change_avatar">
-      <div class="popup__content popup__content_type_change_avatar">
+      <div class="popup__content">
         <button type="button" class="popup__button-close button"></button>
         <form
           action="#"
-          name="delete"
+          name="edit"
           class="popup__container popup__form-change-avatar"
           novalidate
         >
@@ -170,7 +170,7 @@
             type="url"
             value=""
             placeholder="Ссылка на картинку"
-            name="avatarlink"
+            name="avatar"
             id="link-avatar"
             class="popup__input popup__input_link-element"
             required

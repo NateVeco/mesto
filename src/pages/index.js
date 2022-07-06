@@ -39,6 +39,7 @@ import {
     profileAddForm,
     bioProfileChange,
     nameProfileChange,
+    profileAvatar,
     profileChangeAvatarForm,
     profileChangeAvatarButton
 } from "../utils/constants.js";
@@ -114,19 +115,22 @@ const createCard = (data) => {
 };
 
 
-const cardList = new Section((elements) => {
-    const card = createCard(elements);
+const cardList = new Section((cards) => {
+    const card = createCard(cards);
     cardList.setItem(card);
 }, '.elements__table');
 
 
 const addImagePopup = new PopupWithForm('.popup_add-image', {
-    handleFormSubmit: (item) => {
+    handleFormSubmit: (data) => {
         addImagePopup.isLoading(true, 'Создать', 'Создание...')
-        api.addCard(item)
-            .then((res) => {
-                const elementInput = createCard(res);
-                cardList.setItem(elementInput);
+        api.addCard({
+                name: data.name,
+                link: data.link
+            })
+            .then((data) => {
+                const newElement = createCard(data);
+                cardList.setItem(newElement);
                 addImagePopup.close();
             })
             .catch((err) => {
@@ -148,11 +152,13 @@ profileAddButton.addEventListener('click', () => {
 
 
 const changeProfileAvatarPopup = new PopupWithForm('.popup_change_avatar', {
-    handleFormSubmit: (data) => {
+    handleFormSubmit: (item) => {
         changeProfileAvatarPopup.isLoading(true, 'Создать', 'Создание...')
-        api.changeProfileAvatar(data)
+        api.changeProfileAvatar({
+                avatar: item.avatar
+            })
             .then((res) => {
-                profileInfo.setUserInfo(res)
+                profileInfo.setUserInfo(res);
                 changeProfileAvatarPopup.close();
             })
             .catch((err) => {
@@ -164,10 +170,18 @@ const changeProfileAvatarPopup = new PopupWithForm('.popup_change_avatar', {
     }
 });
 
+
 changeProfileAvatarPopup.setEventListeners();
+
+// const openedAvatarPopup = () => {
+//     const item = profileInfo.getUserInfo();
+//     profileAvatar.value = item.avatar;
+// }
+
 
 profileChangeAvatarButton.addEventListener('click', () => {
     changeProfileAvatarPopup.open();
+    // openedAvatarPopup();
     profileChangeUserAvatarForm.resetValidation();
     profileChangeUserAvatarForm.disableSubmitButton();
 });
@@ -218,6 +232,8 @@ const openedEditPopup = () => {
     nameProfileChange.value = item.name;
     bioProfileChange.value = item.bio;
 };
+
+
 
 profileEditButton.addEventListener('click', () => {
     profileEditPopup.open();

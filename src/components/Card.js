@@ -94,13 +94,7 @@ export class Card {
             this._getLikeCard(this)
         });
         this._elementTrashButton.addEventListener('click', () => {
-            this._handleDeleteCard(this)
+            this._handleDeleteCard(this._data)
         });
     }
 }
-
-
-
-// не меняется аватарка,
-// не добавляется картинка
-// не удаляется картинка ? проверить свою

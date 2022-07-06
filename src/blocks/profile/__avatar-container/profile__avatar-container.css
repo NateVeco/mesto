@@ -3,10 +3,3 @@
   width: 120px;
   height: 120px;
 }
-
-@media screen and (max-width: 1020px) {
-    .profile__avatar-container{
-width: 100px;
-    }
-  
-}

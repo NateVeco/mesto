@@ -49,42 +49,42 @@ export class Api {
                 method: 'PATCH',
                 headers: this._headers,
                 body: JSON.stringify({
-                    avatar: item.link
+                    avatar: item.avatar
                 })
             })
             .then(this._getResponse);
     };
 
-    addCard(item) {
+    addCard(data) {
         return fetch(`${this._url}/cards`, {
                 method: 'POST',
                 headers: this._headers,
                 body: JSON.stringify({
-                    name: item.titleImage,
-                    link: item.imageLink
+                    name: data.name,
+                    link: data.link
                 })
             })
             .then(this._getResponse);
     };
 
-    deleteCard(cardId) {
-        return fetch(`${this._url}/cards/${cardId}`, {
+    deleteCard(ownerCard) {
+        return fetch(`${this._url}/cards/${ownerCard}`, {
                 method: 'DELETE',
                 headers: this._headers
             })
             .then(this._getResponse);
     };
 
-    getLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
+    getLike(ownerCard) {
+        return fetch(`${this._url}/cards/${ownerCard}/likes`, {
                 method: 'PUT',
                 headers: this._headers
             })
             .then(this._getResponse);
     };
 
-    deleteLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
+    deleteLike(ownerCard) {
+        return fetch(`${this._url}/cards/${ownerCard}/likes`, {
                 method: 'DELETE',
                 headers: this._headers
             })

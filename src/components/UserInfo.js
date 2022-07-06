@@ -10,13 +10,13 @@ export class UserInfo {
     };
 
     getUserInfo() {
-        this._profileInfo = {
+        this.profileInfo = {
             name: this._profileName.textContent,
             about: this._profileBio.textContent,
             avatar: this._profileAvatar.src
         }
 
-        return this._profileInfo;
+        return this.profileInfo;
     };
 
     setUserInfo(item) {
