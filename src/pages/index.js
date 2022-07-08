@@ -39,7 +39,6 @@ import {
     profileAddForm,
     bioProfileChange,
     nameProfileChange,
-    profileAvatar,
     profileChangeAvatarForm,
     profileChangeAvatarButton
 } from "../utils/constants.js";
@@ -58,7 +57,7 @@ const api = new Api('https://mesto.nomoreparties.co/v1/cohort-44');
 Promise.all([api.getProfileInfo(), api.getCardList()])
     .then(([data, cards]) => {
         userId = data._id;
-        profileInfo.setUserInfo(data);
+        profileUserInfo.setUserInfo(data);
         cardList.renderItems(cards);
     })
     .catch(err => {
@@ -158,7 +157,7 @@ const changeProfileAvatarPopup = new PopupWithForm('.popup_change_avatar', {
                 avatar: item.avatar
             })
             .then((res) => {
-                profileInfo.setUserInfo(res);
+                profileUserInfo.setUserInfo(res);
                 changeProfileAvatarPopup.close();
             })
             .catch((err) => {
@@ -173,15 +172,10 @@ const changeProfileAvatarPopup = new PopupWithForm('.popup_change_avatar', {
 
 changeProfileAvatarPopup.setEventListeners();
 
-// const openedAvatarPopup = () => {
-//     const item = profileInfo.getUserInfo();
-//     profileAvatar.value = item.avatar;
-// }
 
 
 profileChangeAvatarButton.addEventListener('click', () => {
     changeProfileAvatarPopup.open();
-    // openedAvatarPopup();
     profileChangeUserAvatarForm.resetValidation();
     profileChangeUserAvatarForm.disableSubmitButton();
 });
@@ -205,7 +199,7 @@ function openImagePopup({
 
 openedImagePopup.setEventListeners();
 
-const profileInfo = new UserInfo(
+const profileUserInfo = new UserInfo(
     '.profile__name',
     '.profile__bio',
     '.profile__avatar'
@@ -216,8 +210,11 @@ const profileEditPopup = new PopupWithForm('.popup_edit-profile', {
         profileEditPopup.isLoading(true, 'Создать', 'Создание...')
         api.validProfileInfo(item)
             .then((res) => {
-                profileInfo.setUserInfo(res);
+                profileUserInfo.setUserInfo(res)
                 profileEditPopup.close();
+            })
+            .catch((err) => {
+                console.log(err);
             })
             .finally(() => {
                 profileEditPopup.isLoading(false, 'Создать', 'Создание...')
@@ -228,9 +225,9 @@ const profileEditPopup = new PopupWithForm('.popup_edit-profile', {
 profileEditPopup.setEventListeners();
 
 const openedEditPopup = () => {
-    const item = profileInfo.getUserInfo();
+    const item = profileUserInfo.getUserInfo();
     nameProfileChange.value = item.name;
-    bioProfileChange.value = item.bio;
+    bioProfileChange.value = item.about;
 };
 
 
