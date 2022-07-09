@@ -3,7 +3,7 @@ export class FormValidator {
         this._formElement = formElement;
         this._formConfig = formConfig;
         this._inputList = Array.from(this._formElement.querySelectorAll(this._formConfig.inputSelector));
-        this._profileButton = this._formElement.querySelector(this._formConfig.buttonSelector);
+        this._submitButton = this._formElement.querySelector(this._formConfig.buttonSelector);
     };
 
 
@@ -39,22 +39,20 @@ export class FormValidator {
 
     toggleButtonState() {
         if (this._hasInvalidInput()) {
-            this._profileButton.classList.add(this._formConfig.inactiveButtonClass);
             this.disableSubmitButton();
         } else {
-            this._profileButton.classList.remove(this._formConfig.inactiveButtonClass);
-            this.showSubmitButton();
+            this.enableSubmitButton();
         }
     };
 
     disableSubmitButton() {
-        this._profileButton.classList.add(this._formConfig.inactiveButtonClass);
-        this._profileButton.setAttribute('disabled', true);
+        this._submitButton.classList.add(this._formConfig.inactiveButtonClass);
+        this._submitButton.setAttribute('disabled', true);
     };
 
-    showSubmitButton() {
-        this._profileButton.classList.remove(this._formConfig.inactiveButtonClass);
-        this._profileButton.removeAttribute('disabled', true);
+    enableSubmitButton() {
+        this._submitButton.classList.remove(this._formConfig.inactiveButtonClass);
+        this._submitButton.removeAttribute('disabled', true);
     }
 
     resetValidation() {
