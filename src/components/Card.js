@@ -77,6 +77,11 @@ export class Card {
         this._elementTitleImage.textContent = this._name;
         this._elementImage.alt = this._name;
         this._number.textContent = this._likes.length;
+
+        if (this._isLiked()) {
+            this.saveLikeCard(this._data)
+        };
+
         this._deleteOwnerCard();
 
         return this._element;
